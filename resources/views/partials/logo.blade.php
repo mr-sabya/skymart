@@ -1,0 +1,1 @@
+<a href='index.html'><img src="{{ url('assets/frontend/imgs/theme/logo.svg') }}" alt="logo" /></a>
