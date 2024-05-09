@@ -243,11 +243,11 @@
             </div>
             <div class="mobile-social-icon mb-50">
                 <h6 class="mb-15">Follow Us</h6>
-                <a href="#"><img src="assets/imgs/theme/icons/icon-facebook-white.svg" alt="" /></a>
-                <a href="#"><img src="assets/imgs/theme/icons/icon-twitter-white.svg" alt="" /></a>
-                <a href="#"><img src="assets/imgs/theme/icons/icon-instagram-white.svg" alt="" /></a>
-                <a href="#"><img src="assets/imgs/theme/icons/icon-pinterest-white.svg" alt="" /></a>
-                <a href="#"><img src="assets/imgs/theme/icons/icon-youtube-white.svg" alt="" /></a>
+                <a href="#"><img src="{{ url('assets/frontend/imgs/theme/icons/icon-facebook-white.svg') }}" alt="" /></a>
+                <a href="#"><img src="{{ url('assets/frontend/imgs/theme/icons/icon-twitter-white.svg') }}" alt="" /></a>
+                <a href="#"><img src="{{ url('assets/frontend/imgs/theme/icons/icon-instagram-white.svg') }}" alt="" /></a>
+                <a href="#"><img src="{{ url('assets/frontend/imgs/theme/icons/icon-pinterest-white.svg') }}" alt="" /></a>
+                <a href="#"><img src="{{ url('assets/frontend/imgs/theme/icons/icon-youtube-white.svg') }}" alt="" /></a>
             </div>
             <div class="site-copyright">Copyright 2024 © Nest. All rights reserved. Powered by AliThemes.</div>
         </div>

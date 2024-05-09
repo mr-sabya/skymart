@@ -18,3 +18,14 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\Frontend\Ecom\HomeController::class, 'index'])->name('home');
+
+Route::get('/shop', [App\Http\Controllers\Frontend\Ecom\ShopController::class, 'index'])->name('shop.index');
+
+Route::get('/about-us', [App\Http\Controllers\Frontend\Ecom\AboutController::class, 'index'])->name('about.index');
+
+Route::get('/vendors', [App\Http\Controllers\Frontend\Ecom\VendorController::class, 'index'])->name('vendor.index');
+
+Route::get('/blog', [App\Http\Controllers\Frontend\Ecom\BlogController::class, 'index'])->name('blog.index');
+
+Route::get('/contact-us', [App\Http\Controllers\Frontend\Ecom\ContactController::class, 'index'])->name('contact.index');
+
