@@ -71,8 +71,10 @@
                                 <a href='shop-cart.html'><span class="lable">Cart</span></a>
                                 @include('partials.ecom.cart')
                             </div>
+
+                            @auth
                             <div class="header-action-icon-2">
-                                <a href='page-account.html'>
+                                <a href="{{ route('profile.index') }}">
                                     <img class="svgInject" alt="Nest" src="{{ url('assets/frontend/imgs/theme/icons/icon-user.svg') }}" />
                                 </a>
                                 <a href='page-account.html'><span class="lable ml-0">Account</span></a>
@@ -87,6 +89,15 @@
                                     </ul>
                                 </div>
                             </div>
+                            @else
+                            <div class="header-action-icon-2">
+                                <a href="{{ route('login') }}">
+                                    <img class="svgInject" alt="Nest" src="{{ url('assets/frontend/imgs/theme/icons/icon-user.svg') }}" />
+                                </a>
+                                <a href="{{ route('login') }}"><span class="lable ml-0">Login</span></a>
+                                
+                            </div>
+                            @endauth
                         </div>
                     </div>
                 </div>
