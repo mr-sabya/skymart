@@ -22,13 +22,20 @@
                     @csrf
                     <x-backend.input-text title="Name" name="name" value="{{ old('name') }}"></x-backend.input-text>
                     <x-backend.input-text title="Slug" name="slug" value="{{ old('slug') }}"></x-backend.input-text>
-                    <x-backend.input-file title="Image" name="image" cardid="image_input"></x-backend.input-file>
-                    <x-backend.input-file title="Icon" name="icon" cardid="icon_input"></x-backend.input-file>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <x-backend.input-file title="Image" name="image" cardid="image_input"></x-backend.input-file>
+                        </div>
+                        <div class="col-lg-6">
+                            <x-backend.input-file title="Icon" name="icon" cardid="icon_input"></x-backend.input-file>
+                        </div>
+                    </div>
 
                     <x-backend.select-option title="Parent" name="parent_id" :items=$categories></x-backend.select-option>
+                    <x-backend.input-check title="Featured" name="is_featured"></x-backend.input-check>
 
-
-
+                
                     <button class="btn btn-primary">Save</button>
                 </form>
             </div>

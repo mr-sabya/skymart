@@ -23,10 +23,19 @@
                     @method('PUT')
                     <x-backend.input-text title="Name" name="name" value="{{ $category->name }}"></x-backend.input-text>
                     <x-backend.input-text title="Slug" name="slug" value="{{ $category->name }}"></x-backend.input-text>
-                    <x-backend.input-file title="Image" name="image" cardid="image_input" value="{{ getFileUrl($category->image) }}"></x-backend.input-file>
-                    <x-backend.input-file title="Icon" name="icon" cardid="icon_input" value="{{ getFileUrl($category->icon) }}"></x-backend.input-file>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <x-backend.input-file title="Image" name="image" cardid="image_input" value="{{ getFileUrl($category->image) }}"></x-backend.input-file>
+                        </div>
+                        <div class="col-lg-6">
+                            <x-backend.input-file title="Icon" name="icon" cardid="icon_input" value="{{ getFileUrl($category->icon) }}"></x-backend.input-file>
+                        </div>
+                    </div>
 
                     <x-backend.select-option title="Parent" name="parent_id" :items=$categories value="{{ $category->parent_id }}"></x-backend.select-option>
+
+                    <x-backend.input-check title="Featured" name="is_featured" value="{{ $category->is_featured }}"></x-backend.input-check>
 
 
 

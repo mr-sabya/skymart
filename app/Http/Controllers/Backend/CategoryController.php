@@ -19,6 +19,13 @@ class CategoryController extends Controller
         return view('backend.category.index', compact('categories'));
     }
 
+    // trash item list
+    public function trash()
+    {
+        $categories = Category::withTrashed()->where('deleted_at', '!=', NULL)->get();
+        return view('backend.category.trash', compact('categories'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -50,7 +57,7 @@ class CategoryController extends Controller
         }
 
         Category::create($data);
-        return redirect()->route('admin.category.index');
+        return redirect()->route('admin.category.index')->with('success', 'Category has been created successfully');
     }
 
     /**
@@ -64,7 +71,7 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
         $category = Category::findOrFail(intval($id));
         $categories = Category::with('childs')->where('parent_id', NULL)->get();
@@ -74,7 +81,7 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         $category = Category::findOrFail(intval($id));
 
@@ -102,14 +109,61 @@ class CategoryController extends Controller
         }
 
         $category->update($data);
-        return redirect()->route('admin.category.index');
+        return redirect()->route('admin.category.index')->with('success', 'Category has been updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $category = Category::findOrFail(intval($id));
+
+        // childs delete
+        if($category->childs->count() > 0){
+            foreach($category->childs as $subcat){
+                // childs delete
+                if($subcat->childs->count() > 0){
+                    foreach($subcat->childs as $child){
+                        $child->delete();
+                    }
+                }
+
+                $subcat->delete();
+            }
+        }
+
+        $category->delete();
+        return redirect()->route('admin.category.index')->with('success', 'Category has been deleted successfully');
+    }
+
+    // restore
+    public function restore($id)
+    {
+        $category = Category::withTrashed()->findOrFail(intval($id));
+
+        $parent = Category::withTrashed()->where('id', $category->parent_id)->where('deleted_at', '!=', NULL)->first();
+
+        if($parent){
+            return redirect()->route('admin.category.trash')->with('error', 'Restore parent category first!!');
+        }else{
+            $category->restore();
+            return redirect()->route('admin.category.index')->with('success', 'Category has been restored successfully');
+        }
+
+    }
+
+    // force delete
+    public function forceDelete($id)
+    {
+        $category = Category::withTrashed()->findOrFail(intval($id));
+
+        $childs = Category::withTrashed()->where('parent_id', $category->id)->get();
+        if($childs->count() > 0){
+            return redirect()->route('admin.category.trash')->with('error', 'Delete child categories first!!');
+        }else{
+            $category->forceDelete();
+            return redirect()->route('admin.category.trash')->with('success', 'Category has been deleted permanently');
+        }
     }
 }

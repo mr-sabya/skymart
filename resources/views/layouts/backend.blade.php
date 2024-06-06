@@ -24,12 +24,18 @@
     <link href="{{ asset('assets/backend/vendor/swiper/css/swiper-bundle.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/backend/vendor/swiper/css/swiper-bundle.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/backend/vendor/noUiSlider/14.6.4/nouislider.min.css') }}" rel="stylesheet">
+
+    <!-- datatable -->
     <link href="{{ asset('assets/backend/vendor/datatables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/backend/vendor/datatables/css/buttons.dataTables.min.css') }}" rel="stylesheet">
+
     <link href="{{ asset('assets/backend/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
 
     <!-- tagify-css -->
     <link href="{{ asset('assets/backend/vendor/tagify/dist/tagify.css') }}" rel="stylesheet">
+
+    <!-- Toastr -->
+    <link href="{{ asset('assets/backend/vendor/toastr/css/toastr.min.css') }}" rel="stylesheet">
 
     <!-- Style css -->
     <link href="{{ asset('assets/backend/css/style.css') }}" rel="stylesheet">
@@ -40,7 +46,7 @@
 <body data-typography="poppins" data-theme-version="light" data-layout="vertical" data-nav-headerbg="black" data-headerbg="color_1">
 
 
-    
+
     <!--*******************
         Preloader start
     ********************-->
@@ -52,7 +58,7 @@
     <!--*******************
         Preloader end
     ********************-->
-    
+
 
     <!--**********************************
         Main wrapper start
@@ -66,7 +72,7 @@
             Nav header end
         ***********************************-->
 
-        
+
 
         <!--**********************************
             Header start
@@ -128,16 +134,13 @@
     ***********************************-->
     <!-- Required vendors -->
     <script src="{{ asset('assets/backend/vendor/global/global.min.js') }}"></script>
+
     <script src="{{ asset('assets/backend/vendor/chart.js/Chart.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/backend/vendor/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
     <script src="{{ asset('assets/backend/vendor/apexchart/apexchart.js') }}"></script>
 
-    <!-- Dashboard 1 -->
 
-
-
-
-    <!-- tagify -->
+    <!-- datatable -->
 
     <script src="{{ asset('assets/backend/vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/backend/vendor/datatables/js/dataTables.buttons.min.js') }}"></script>
@@ -150,11 +153,60 @@
     <script src="{{ asset('assets/backend/vendor/bootstrap-datetimepicker/js/moment.js') }}"></script>
     <script src="{{ asset('assets/backend/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
 
+    <!-- Toastr -->
+    <script src="{{ asset('assets/backend/vendor/toastr/js/toastr.min.js') }}"></script>
+
 
     @yield('scripts')
     <!-- Vectormap -->
     <script src="{{ asset('assets/backend/js/custom.js') }}"></script>
     <script src="{{ asset('assets/backend/js/deznav-init.js') }}"></script>
+
+    @if(Session::has('success'))
+    <script>
+        toastr.success("{{ Session::get('success')}}", "Success", {
+            positionClass: "toast-top-right",
+            timeOut: 5e3,
+            closeButton: !0,
+            debug: !1,
+            newestOnTop: !0,
+            progressBar: !0,
+            preventDuplicates: !0,
+            onclick: null,
+            showDuration: "300",
+            hideDuration: "1000",
+            extendedTimeOut: "1000",
+            showEasing: "swing",
+            hideEasing: "linear",
+            showMethod: "fadeIn",
+            hideMethod: "fadeOut",
+            tapToDismiss: !1
+        })
+    </script>
+    @endif
+
+    @if(Session::has('error'))
+    <script>
+        toastr.error("{{ Session::get('error')}}", "Error", {
+            positionClass: "toast-top-right",
+            timeOut: 5e3,
+            closeButton: !0,
+            debug: !1,
+            newestOnTop: !0,
+            progressBar: !0,
+            preventDuplicates: !0,
+            onclick: null,
+            showDuration: "300",
+            hideDuration: "1000",
+            extendedTimeOut: "1000",
+            showEasing: "swing",
+            hideEasing: "linear",
+            showMethod: "fadeIn",
+            hideMethod: "fadeOut",
+            tapToDismiss: !1
+        })
+    </script>
+    @endif
 
 
 </body>

@@ -23,7 +23,12 @@ Route::name('admin.')->group(function () {
 
     Route::group(['middleware' => 'adminauth'], function () {
         Route::get('/', [App\Http\Controllers\Backend\HomeController::class, 'index'])->name('dashboard');
-
+        
         Route::resource('category', App\Http\Controllers\Backend\CategoryController::class);
+
+        Route::get('trash/category', [App\Http\Controllers\Backend\CategoryController::class, 'trash'])->name('category.trash');
+        Route::get('trash/category/restore/{id}', [App\Http\Controllers\Backend\CategoryController::class, 'restore'])->name('category.restore');
+        Route::delete('trash/category/delete/{id}', [App\Http\Controllers\Backend\CategoryController::class, 'forceDelete'])->name('category.forcedelete');
+        
     });
 });
