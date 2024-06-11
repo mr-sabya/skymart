@@ -33,6 +33,7 @@ Route::get('/contact-us', [App\Http\Controllers\Frontend\Ecom\ContactController:
 // login
 Route::get('/login', [App\Http\Controllers\Frontend\Ecom\Auth\LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [App\Http\Controllers\Frontend\Ecom\Auth\LoginController::class, 'login'])->name('login');
+Route::get('/logout', [App\Http\Controllers\Frontend\Ecom\Auth\LoginController::class, 'logout'])->name('logout');
 
 // registration
 Route::get('/register', [App\Http\Controllers\Frontend\Ecom\Auth\RegisterController::class, 'showRegisterForm'])->name('register');

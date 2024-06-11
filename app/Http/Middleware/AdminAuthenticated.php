@@ -16,7 +16,7 @@ class AdminAuthenticated
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::user() && Auth::guard('admin')) {
+        if (Auth::guard('admin')->check()) {
             return $next($request);
         }
         if ($request->ajax() || $request->wantsJson()) {

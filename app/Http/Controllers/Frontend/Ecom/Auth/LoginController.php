@@ -33,4 +33,10 @@ class LoginController extends Controller
             return back()->with('error', 'Please Try Again!!!!');
         }
     }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('login');
+    }
 }
