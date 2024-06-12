@@ -7,6 +7,7 @@ use App\Models\Brand;
 use App\Utilities\FileUploadHelper;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 class BrandController extends Controller
 {
@@ -54,8 +55,9 @@ class BrandController extends Controller
         $data = $request->all();
 
         if ($request->image && $request->image instanceof UploadedFile) {
-            $data['image'] = FileUploadHelper::store($request->image, 'categories');
+            $data['image'] = FileUploadHelper::store($request->image, 'brands');
         }
+        // return $data;
 
         Brand::create($data);
         return redirect()->route('admin.brand.index')->with('success', 'Brand has been created successfully');
@@ -103,7 +105,7 @@ class BrandController extends Controller
 
 
         if ($request->image && $request->image instanceof UploadedFile) {
-            $data['image'] = FileUploadHelper::store($request->image, 'categories', $brand->image);
+            $data['image'] = FileUploadHelper::store($request->image, 'brands', $brand->image);
         }
 
         $brand->update($data);
@@ -118,5 +120,28 @@ class BrandController extends Controller
         $brand = Brand::findOrFail(intval($id));
         $brand->delete();
         return redirect()->route('admin.brand.index')->with('success', 'Brand has been deleted successfully');
+    }
+
+    // restore
+    public function restore($id)
+    {
+        $brand = Brand::withTrashed()->findOrFail(intval($id));
+
+        $brand->restore();
+        return redirect()->route('admin.brand.index')->with('success', 'Brand has been restored successfully');
+    }
+
+
+    // force delete
+    public function forceDelete($id)
+    {
+        $brand = Brand::withTrashed()->findOrFail(intval($id));
+
+        if (Storage::disk('public')->exists($brand->image)) {
+            Storage::disk('public')->delete($brand->image);
+        }
+
+        $brand->forceDelete();
+        return redirect()->route('admin.brand.trash')->with('success', 'Brand has been deleted permanently');
     }
 }

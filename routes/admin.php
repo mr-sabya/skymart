@@ -33,6 +33,8 @@ Route::name('admin.')->group(function () {
         // brands
         Route::resource('brand', App\Http\Controllers\Backend\BrandController::class);
         Route::get('trash/brand', [App\Http\Controllers\Backend\BrandController::class, 'trash'])->name('brand.trash');
+        Route::get('trash/brand/restore/{id}', [App\Http\Controllers\Backend\BrandController::class, 'restore'])->name('brand.restore');
+        Route::delete('trash/brand/delete/{id}', [App\Http\Controllers\Backend\BrandController::class, 'forceDelete'])->name('brand.forcedelete');
         
     });
 });

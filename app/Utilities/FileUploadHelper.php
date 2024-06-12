@@ -27,10 +27,12 @@ class FileUploadHelper
         if (is_array($file)) {
             $savedLocation = [];
             foreach ($file as $key => $value) {
-                $savedLocation[$key] = $value->store($dir, 'public');
+                $picName = $value->getClientOriginalName();
+                $savedLocation[$key] = $value->storeAs($dir, $picName, 'public');
             }
         } else {
-            $savedLocation = $file->store($dir, 'public');
+            $picName = $file->getClientOriginalName();
+            $savedLocation = $file->storeAs($dir, $picName, 'public');
         }
         return $savedLocation;
     }

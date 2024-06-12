@@ -50,8 +50,8 @@
 
                                 <td>
                                     <div class="d-flex">
-                                        <a href="{{ route('admin.brand.edit', $brand->id)}}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa-solid fa-pencil-alt"></i></a>
-                                        <a href="javascript:void(0)" class="delete btn btn-danger shadow btn-xs sharp" data-url="{{ route('admin.brand.destroy', $brand->id) }}"><i class="fa-solid fa-trash"></i></a>
+                                        <a href="{{ route('admin.brand.restore', $brand->id)}}" class="btn btn-primary shadow btn-xs sharp me-1 w-auto px-2"><i class="fa-solid fa-arrows-rotate"></i> Restore</a>
+                                        <a href="javascript:void(0)" class="delete btn btn-danger shadow btn-xs sharp" data-url="{{ route('admin.brand.forcedelete', $brand->id) }}"><i class="fa-solid fa-trash"></i></a>
                                     </div>
                                 </td>
                             </tr>
