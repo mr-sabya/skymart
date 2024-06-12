@@ -18,7 +18,7 @@
 
             <div class="card-body pt-0">
 
-                <x-backend.card-menu mainlink="admin.brand.index" trashlink="admin.brand.trash"></x-backend.card-menu>
+                <x-backend.card-menu mainlink="admin.brand.index" trashlink="admin.brand.trash" model="Brand"></x-backend.card-menu>
 
                 <div class="table-responsive">
                     <table id="example3" class="display table image-table" style="min-width: 845px">
