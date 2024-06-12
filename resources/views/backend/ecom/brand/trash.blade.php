@@ -17,14 +17,9 @@
             <!-- /tab-content -->
 
             <div class="card-body pt-0">
-                <ul class="nav nav-pills mb-4 light">
-                    <li class=" nav-item">
-                        <a href="{{ route('admin.brand.index')}}" class="nav-link {{ Route::is('admin.brand.index') ? 'active' : '' }}"><i class="fa-solid fa-bars me-2"></i>All</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin.brand.trash') }}" class="nav-link {{ Route::is('admin.brand.trash') ? 'active' : '' }}"><i class="fa-solid fa-trash me-2"></i>Trash</a>
-                    </li>
-                </ul>
+
+                <x-backend.card-menu mainlink="admin.brand.index" trashlink="admin.brand.trash"></x-backend.card-menu>
+
                 <div class="table-responsive">
                     <table id="example3" class="display table image-table" style="min-width: 845px">
                         <thead>
@@ -50,8 +45,8 @@
 
                                 <td>
                                     <div class="d-flex">
-                                        <a href="{{ route('admin.brand.edit', $brand->id)}}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa-solid fa-pencil-alt"></i></a>
-                                        <a href="javascript:void(0)" class="delete btn btn-danger shadow btn-xs sharp" data-url="{{ route('admin.brand.destroy', $brand->id) }}"><i class="fa-solid fa-trash"></i></a>
+                                        <a href="{{ route('admin.brand.restore', $brand->id)}}" class="btn btn-primary shadow btn-xs sharp me-1 w-auto px-2"><i class="fa-solid fa-arrows-rotate"></i> Restore</a>
+                                        <a href="javascript:void(0)" class="delete btn btn-danger shadow btn-xs sharp" data-url="{{ route('admin.brand.forcedelete', $brand->id) }}"><i class="fa-solid fa-trash"></i></a>
                                     </div>
                                 </td>
                             </tr>

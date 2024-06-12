@@ -24,17 +24,23 @@ Route::name('admin.')->group(function () {
     Route::group(['middleware' => 'adminauth'], function () {
         Route::get('/', [App\Http\Controllers\Backend\HomeController::class, 'index'])->name('dashboard');
         
-        Route::resource('category', App\Http\Controllers\Backend\CategoryController::class);
+        Route::resource('category', App\Http\Controllers\Backend\Ecom\CategoryController::class);
         
-        Route::get('trash/category', [App\Http\Controllers\Backend\CategoryController::class, 'trash'])->name('category.trash');
-        Route::get('trash/category/restore/{id}', [App\Http\Controllers\Backend\CategoryController::class, 'restore'])->name('category.restore');
-        Route::delete('trash/category/delete/{id}', [App\Http\Controllers\Backend\CategoryController::class, 'forceDelete'])->name('category.forcedelete');
+        Route::get('trash/category', [App\Http\Controllers\Backend\Ecom\CategoryController::class, 'trash'])->name('category.trash');
+        Route::get('trash/category/restore/{id}', [App\Http\Controllers\Backend\Ecom\CategoryController::class, 'restore'])->name('category.restore');
+        Route::delete('trash/category/delete/{id}', [App\Http\Controllers\Backend\Ecom\CategoryController::class, 'forceDelete'])->name('category.forcedelete');
         
         // brands
-        Route::resource('brand', App\Http\Controllers\Backend\BrandController::class);
-        Route::get('trash/brand', [App\Http\Controllers\Backend\BrandController::class, 'trash'])->name('brand.trash');
-        Route::get('trash/brand/restore/{id}', [App\Http\Controllers\Backend\BrandController::class, 'restore'])->name('brand.restore');
-        Route::delete('trash/brand/delete/{id}', [App\Http\Controllers\Backend\BrandController::class, 'forceDelete'])->name('brand.forcedelete');
+        Route::resource('brand', App\Http\Controllers\Backend\Ecom\BrandController::class);
+        Route::get('trash/brand', [App\Http\Controllers\Backend\Ecom\BrandController::class, 'trash'])->name('brand.trash');
+        Route::get('trash/brand/restore/{id}', [App\Http\Controllers\Backend\Ecom\BrandController::class, 'restore'])->name('brand.restore');
+        Route::delete('trash/brand/delete/{id}', [App\Http\Controllers\Backend\Ecom\BrandController::class, 'forceDelete'])->name('brand.forcedelete');
+        
+        // attributes
+        Route::resource('attribute', App\Http\Controllers\Backend\Ecom\AttributeController::class);
+        Route::get('trash/attribute', [App\Http\Controllers\Backend\Ecom\AttributeController::class, 'trash'])->name('attribute.trash');
+        Route::get('trash/attribute/restore/{id}', [App\Http\Controllers\Backend\Ecom\AttributeController::class, 'restore'])->name('attribute.restore');
+        Route::delete('trash/attribute/delete/{id}', [App\Http\Controllers\Backend\Ecom\AttributeController::class, 'forceDelete'])->name('attribute.forcedelete');
         
     });
 });

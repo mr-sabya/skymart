@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Backend\Ecom;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
@@ -16,14 +16,14 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::with('childs')->where('parent_id', NULL)->get();
-        return view('backend.category.index', compact('categories'));
+        return view('backend.ecom.category.index', compact('categories'));
     }
 
     // trash item list
     public function trash()
     {
         $categories = Category::withTrashed()->where('deleted_at', '!=', NULL)->get();
-        return view('backend.category.trash', compact('categories'));
+        return view('backend.ecom.category.trash', compact('categories'));
     }
 
     /**
@@ -32,7 +32,7 @@ class CategoryController extends Controller
     public function create()
     {
         $categories = Category::with('childs')->where('parent_id', NULL)->get();
-        return view('backend.category.create', compact('categories'));
+        return view('backend.ecom.category.create', compact('categories'));
     }
 
     /**
@@ -75,7 +75,7 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail(intval($id));
         $categories = Category::with('childs')->where('parent_id', NULL)->get();
-        return view('backend.category.edit', compact('category', 'categories'));
+        return view('backend.ecom.category.edit', compact('category', 'categories'));
     }
 
     /**

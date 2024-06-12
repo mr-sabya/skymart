@@ -48,7 +48,7 @@
             </li>
             <li class="menu-title">OUR FEATURES</li>
             
-            <li class="{{ Route::is('admin.brand.index') ? 'mm-active' : '' }}">
+            <li class="{{ Route::is('admin.brand.*') || Route::is('admin.attribute.*') ? 'mm-active' : '' }}">
                 <a class="has-arrow " href="javascript:void(0);">
                     <div class="menu-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -63,10 +63,12 @@
                 <ul>
                     <li><a href="chart-flot.html">Products</a></li>
                     <li><a href="chart-morris.html">Category</a></li>
-                    <li class="{{ Route::is('admin.brand.index') ? 'mm-active' : '' }}">
-                        <a class="{{ Route::is('admin.brand.index') ? 'mm-active' : '' }}" href="{{ route('admin.brand.index')}}">Brands</a>
+                    <li class="{{ Route::is('admin.brand.*') ? 'mm-active' : '' }}">
+                        <a class="{{ Route::is('admin.brand.*') ? 'mm-active' : '' }}" href="{{ route('admin.brand.index')}}">Brands</a>
                     </li>
-                    <li><a href="chart-chartist.html">Variations</a></li>
+                    <li class="{{ Route::is('admin.attribute.*') ? 'mm-active' : '' }}">
+                        <a class="{{ Route::is('admin.attribute.*') ? 'mm-active' : '' }}" href="{{ route('admin.attribute.index')}}">Attributes</a>
+                    </li>
                     <li><a href="chart-sparkline.html">Sparkline</a></li>
                     <li><a href="chart-peity.html">Peity</a></li>
                 </ul>

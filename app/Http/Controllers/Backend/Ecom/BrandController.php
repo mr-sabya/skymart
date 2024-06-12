@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Backend\Ecom;
 
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
@@ -19,7 +19,7 @@ class BrandController extends Controller
         $title = "Brand";
         $list_page = "Brands";
         $brands = Brand::orderBy('id', 'DESC')->get();
-        return view('backend.brand.index', compact('brands', 'title', 'list_page'));
+        return view('backend.ecom.brand.index', compact('brands', 'title', 'list_page'));
     }
 
     // trash item list
@@ -28,7 +28,7 @@ class BrandController extends Controller
         $title = "Brand";
         $list_page = "Brands";
         $brands = Brand::withTrashed()->where('deleted_at', '!=', NULL)->get();
-        return view('backend.brand.trash', compact('title', 'list_page', 'brands'));
+        return view('backend.ecom.brand.trash', compact('title', 'list_page', 'brands'));
     }
 
     /**
@@ -38,7 +38,7 @@ class BrandController extends Controller
     {
         $title = "Brand";
         $list_page = "Brands";
-        return view('backend.brand.create', compact('title', 'list_page'));
+        return view('backend.ecom.brand.create', compact('title', 'list_page'));
     }
 
     /**
@@ -79,7 +79,7 @@ class BrandController extends Controller
         $title = "Brand";
         $list_page = "Brands";
         $brand = Brand::findOrFail(intval($id));
-        return view('backend.brand.edit', compact('title', 'list_page', 'brand'));
+        return view('backend.ecom.brand.edit', compact('title', 'list_page', 'brand'));
     }
 
     /**

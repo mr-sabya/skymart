@@ -18,14 +18,7 @@
 
             <div class="card-body pt-0">
 
-                <ul class="nav nav-pills mb-4 light">
-                    <li class=" nav-item">
-                        <a href="{{ route('admin.category.index')}}" class="nav-link {{ Route::is('admin.category.index') ? 'active' : '' }}"><i class="fa-solid fa-bars me-2"></i>All</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin.category.trash') }}" class="nav-link {{ Route::is('admin.category.trash') ? 'active' : '' }}"><i class="fa-solid fa-trash me-2"></i>Trash</a>
-                    </li>
-                </ul>
+                <x-backend.card-menu mainlink="admin.category.index" trashlink="admin.category.trash"></x-backend.card-menu>
 
                 <div class="table-responsive">
                     <table id="example3" class="display table image-table" style="min-width: 845px">

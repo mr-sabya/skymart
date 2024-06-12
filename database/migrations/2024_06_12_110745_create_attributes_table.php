@@ -11,15 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product_variations', function (Blueprint $table) {
+        Schema::create('attributes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('product_id');
-            $table->unsignedBigInteger('attribute_id');
             $table->string('name');
-            $table->string('color_code')->nullable();
-            $table->decimal('price', 10, 2)->nullable();
-            $table->decimal('actual_price', 10, 2)->nullable();
-            $table->string('image')->nullable();
+            $table->integer('type')->comment('1 = Color, 2 = Text, 3 = Image');
+            $table->integer('shape')->comment('1 = Default, 2 = Square, 3 = Round, 4 = Circle');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -30,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_variations');
+        Schema::dropIfExists('attributes');
     }
 };

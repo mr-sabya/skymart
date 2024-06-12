@@ -11,47 +11,40 @@
                     <h4 class="card-title">{{ $title }}</h4>
                     <p class="m-0 subtitle">All <code>{{ $list_page }}</code></p>
                 </div>
-                <a href="{{ route('admin.brand.create')}}" class="btn btn-primary"><i class="fa-solid fa-plus me-2"></i>{{ $title }}</a>
+                <a href="{{ route('admin.attribute.create')}}" class="btn btn-primary"><i class="fa-solid fa-plus me-2"></i>{{ $title }}</a>
             </div>
 
             <!-- /tab-content -->
 
             <div class="card-body pt-0">
-                <ul class="nav nav-pills mb-4 light">
-                    <li class=" nav-item">
-                        <a href="{{ route('admin.brand.index')}}" class="nav-link {{ Route::is('admin.brand.index') ? 'active' : '' }}"><i class="fa-solid fa-bars me-2"></i>All</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin.brand.trash') }}" class="nav-link {{ Route::is('admin.brand.trash') ? 'active' : '' }}"><i class="fa-solid fa-trash me-2"></i>Trash</a>
-                    </li>
-                </ul>
+
+                <x-backend.card-menu mainlink="admin.attribute.index" trashlink="admin.attribute.trash" model="Attribute"></x-backend.card-menu>
+
                 <div class="table-responsive">
                     <table id="example3" class="display table image-table" style="min-width: 845px">
                         <thead>
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
-                                <th>Image</th>
-                                <th>Slug</th>
+                                <th>Type</th>
+                                <th>Shape</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @php
-                            $count = 1;
-                            @endphp
-
-                            @foreach($brands as $brand)
+                            @foreach($attributes as $attribute)
                             <tr>
-                                <td>{{ $count++ }}</td>
-                                <td>{{ $brand->name }}</td>
-                                <td><img class="item-image" src="{{ getFileUrl($brand->image) }}" alt=""></td>
-                                <td>{{ $brand->slug }}</td>
+                                <td>{{ $loop->index + 1 }}</td>
+                                <td>{{ $attribute->name }}</td>
+                                <td>{{ $attribute->getType($attribute->id) }}</td>
+                                <td>{{ $attribute->getShape($attribute->id) }}</td>
 
                                 <td>
-                                    <div class="d-flex">
-                                        <a href="{{ route('admin.brand.restore', $brand->id)}}" class="btn btn-primary shadow btn-xs sharp me-1 w-auto px-2"><i class="fa-solid fa-arrows-rotate"></i> Restore</a>
-                                        <a href="javascript:void(0)" class="delete btn btn-danger shadow btn-xs sharp" data-url="{{ route('admin.brand.forcedelete', $brand->id) }}"><i class="fa-solid fa-trash"></i></a>
+                                <div class="d-flex">
+                                        <div>
+                                            <a href="{{ route('admin.attribute.restore', $attribute->id)}}" class="btn btn-primary shadow btn-xs sharp me-1 w-auto px-2"><i class="fa-solid fa-arrows-rotate"></i> Restore</a>
+                                        </div>
+                                        <a href="javascript:void(0)" class="delete btn btn-danger shadow btn-xs sharp w-auto" data-url="{{ route('admin.attribute.forcedelete', $attribute->id) }}"><i class="fa-solid fa-trash"></i></a>
                                     </div>
                                 </td>
                             </tr>
