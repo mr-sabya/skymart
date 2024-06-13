@@ -15,11 +15,15 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('attribute_id');
-            $table->string('name');
-            $table->string('color_code')->nullable();
+            $table->unsignedBigInteger('attribute_item_id');
+            $table->string('sku')->unique()->nullable();
+            $table->integer('stock')->nullable();
+            $table->integer('weight')->nullable();
+            $table->integer('length')->nullable();
+            $table->integer('width')->nullable();
+            $table->integer('height')->nullable();
             $table->decimal('price', 10, 2)->nullable();
             $table->decimal('actual_price', 10, 2)->nullable();
-            $table->string('image')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

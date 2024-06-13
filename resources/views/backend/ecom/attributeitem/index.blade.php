@@ -4,21 +4,52 @@
 <div class="row">
 
     <!-- Column starts -->
-    <div class="col-xl-12">
+    <div class="col-xl-5">
+        <div class="card dz-card">
+            <div class="card-header flex-wrap d-flex justify-content-between">
+                <div>
+                    <h4 class="card-title">{{ $title }}</h4>
+                    <p class="m-0 subtitle">Add New <code>{{ $title }}</code></p>
+                </div>
+                
+            </div>
+
+            <!-- /tab-content -->
+
+            <div class="card-body pt-0">
+
+                <form action="{{ route('admin.attribute-item.store') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="attribute_id" value="{{ $attribute->id }}">
+                    <x-backend.input-text title="Name" name="name" value="{{ old('name') }}"></x-backend.input-text>
+                    
+                    @if($attribute->type == 1)
+                    <x-backend.input-color title="Color" name="color_code" ></x-backend.input-color>
+                    @elseif($attribute->type == 3)
+                    <x-backend.input-file title="Image" name="image" cardid="image_input"></x-backend.input-file>
+                    @endif
+
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+
+            <!-- /tab-content -->
+
+        </div>
+    </div>
+    <div class="col-xl-7">
         <div class="card dz-card">
             <div class="card-header flex-wrap d-flex justify-content-between">
                 <div>
                     <h4 class="card-title">{{ $title }}</h4>
                     <p class="m-0 subtitle">All <code>{{ $list_page }}</code></p>
                 </div>
-                <a href="{{ route('admin.attribute.create')}}" class="btn btn-primary"><i class="fa-solid fa-plus me-2"></i>{{ $title }}</a>
+                
             </div>
 
             <!-- /tab-content -->
 
             <div class="card-body pt-0">
-                
-                <x-backend.card-menu mainlink="admin.attribute.index" trashlink="admin.attribute.trash" model="Attribute"></x-backend.card-menu>
 
                 <div class="table-responsive">
                     <table id="example3" class="display table image-table" style="min-width: 845px">
@@ -26,26 +57,30 @@
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
-                                <th>Type</th>
-                                <th>Shape</th>
+                                @if($attribute->type == 1)
+                                <th>Color</th>
+                                @elseif($attribute->type == 3)
+                                <th>Image</th>
+                                @endif
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($attributes as $attribute)
+                            @foreach($items as $item)
                             <tr>
                                 <td>{{ $loop->index + 1 }}</td>
-                                <td>{{ $attribute->name }}</td>
-                                <td>{{ $attribute->getType($attribute->id) }}</td>
-                                <td>{{ $attribute->getShape($attribute->id) }}</td>
+                                <td>{{ $item->name }}</td>
+                                @if($attribute->type == 1)
+                                <td>{{ $item->color_code }}</td>
+                                @elseif($attribute->type == 3)
+                                <th><img class="item-image" src="{{ getFileUrl($item->image) }}" alt=""></th>
+                                @endif
 
                                 <td>
                                     <div class="d-flex">
-                                        <a href="{{ route('admin.attribute.edit', $attribute->id)}}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa-solid fa-pencil-alt"></i></a>
+                                        <a href="{{ route('admin.attribute-item.edit', $item->id)}}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa-solid fa-pencil-alt"></i></a>
+                                        <a href="javascript:void(0)" class="delete btn btn-danger shadow btn-xs sharp" data-url="{{ route('admin.attribute-item.destroy', $item->id) }}"><i class="fa-solid fa-trash"></i></a>
 
-                                        <a href="javascript:void(0)" class="delete btn btn-danger shadow btn-xs sharp me-1" data-url="{{ route('admin.attribute.destroy', $attribute->id) }}"><i class="fa-solid fa-trash"></i></a>
-
-                                        <a href="{{ route('admin.attribute-item.index', $attribute->id) }}" class="btn btn-primary shadow btn-xs sharp w-auto px-2"><i class="fa-solid fa-bars"></i> Items ({{ $attribute->items->count() }})</a>
                                     </div>
                                 </td>
                             </tr>

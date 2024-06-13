@@ -6,7 +6,7 @@
     position: relative;
     margin: 0 auto 12px auto;
     z-index: 1;
-    
+
 }
 
 .card-input-image .label-upload-image {
@@ -81,16 +81,57 @@
     justify-content: center;
 }
 
-.form-group{
+input[type=color]{
+    cursor: pointer;
+}
+
+.form-group {
     margin-bottom: 15px;
 }
 
 
-.image-table .item-icon{
+.image-table .item-icon {
     width: 80px;
 }
 
 
-.image-table .item-image{
+.image-table .item-image {
     width: 100px;
+}
+
+
+.form-color{
+    display: inline-block;
+    width: 200px;
+}
+
+.color-picker {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 2.813rem;
+    border-radius: 0.375rem;
+    padding-right: 1rem;
+    border: 1px solid #E6E6E6;
+    border-color: rgba(0, 0, 0, 0.1);
+    
+}
+
+.color-picker .color-input{
+    flex-basis: 50%;
+    border-radius: 0.375rem;
+    overflow: hidden;
+}
+
+
+.color-picker .text{
+    flex-basis: 50%;
+    text-align: center;
+}
+
+.color-picker .text label {
+    margin: 0;
+    cursor: pointer;
+    width: 100%;
+
 }

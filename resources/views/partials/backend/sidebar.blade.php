@@ -67,7 +67,7 @@
             </li>
             <li class="menu-title">OUR FEATURES</li>
             
-            <li class="{{ Route::is('admin.brand.*') || Route::is('admin.attribute.*') ? 'mm-active' : '' }}">
+            <li class="{{ Route::is('admin.brand.*') || Route::is('admin.attribute.*') || Route::is('admin.attribute-item.*') ? 'mm-active' : '' }}">
                 <a class="has-arrow " href="javascript:void(0);">
                     <div class="menu-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

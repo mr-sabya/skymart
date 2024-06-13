@@ -42,6 +42,14 @@ Route::name('admin.')->group(function () {
         Route::get('trash/attribute/restore/{id}', [App\Http\Controllers\Backend\Ecom\AttributeController::class, 'restore'])->name('attribute.restore');
         Route::delete('trash/attribute/delete/{id}', [App\Http\Controllers\Backend\Ecom\AttributeController::class, 'forceDelete'])->name('attribute.forcedelete');
         
+        // attribute item
+        Route::get('attribute/items/{attribute}', [App\Http\Controllers\Backend\Ecom\AttributeItemController::class, 'index'])->name('attribute-item.index');
+
+        Route::post('attribute-items/store', [App\Http\Controllers\Backend\Ecom\AttributeItemController::class, 'store'])->name('attribute-item.store');
+        Route::get('attribute-items/{id}/edit', [App\Http\Controllers\Backend\Ecom\AttributeItemController::class, 'edit'])->name('attribute-item.edit');
+        Route::put('attribute-items/update/{id}', [App\Http\Controllers\Backend\Ecom\AttributeItemController::class, 'update'])->name('attribute-item.update');
+        Route::delete('attribute-items/{id}', [App\Http\Controllers\Backend\Ecom\AttributeItemController::class, 'destroy'])->name('attribute-item.destroy');
+        
         // tags
         Route::resource('tag', App\Http\Controllers\Backend\TagController::class);
         Route::get('trash/tag', [App\Http\Controllers\Backend\TagController::class, 'trash'])->name('tag.trash');

@@ -783,18 +783,42 @@ function delete_value(name, preview) {
 
 
 // handle error
-$('.error-input').keyup(function(){
+$('.error-input').keyup(function () {
 	id = $(this).attr('id');
-	if($(this).val() != ''){
-		$('#'+id+'_error').html('');
+	if ($(this).val() != '') {
+		$('#' + id + '_error').html('');
 	}
 });
 
 
+
+
 // generate slug
-$("#name").keyup(function() {
+$("#name").keyup(function () {
 	var Text = $(this).val();
 	Text = Text.toLowerCase();
-	Text = Text.replace(/[^a-zA-Z0-9]+/g,'-');
-	$("#slug").val(Text);        
-  });
+	Text = Text.replace(/[^a-zA-Z0-9]+/g, '-');
+	$("#slug").val(Text);
+});
+
+
+// color picker
+$('#get_color').change(function () {
+	id = $(this).attr('data-value');
+	if ($(this).val() != '') {
+		$('#' + id + '_error').html('');
+		$('#remove_color').removeClass('d-none');
+	}
+
+
+	let value = $(this).val();
+	$('#' + id).val(value);
+
+});
+
+$('#remove_color').click(function () {
+	id = $(this).attr('data-value');
+	$('#get_color').val('#f6f7f7');
+	$('#' + id).val('');
+	$(this).addClass('d-none');
+});

@@ -41,13 +41,20 @@ class Attribute extends Model
     public function getShape($id)
     {
         $data = '';
-        $types = AttributeShapes::getData();
-        foreach ($types as $type) {
-            if ($this->type == $type['id']) {
-                $data = $type['name'];
+        $shapes = AttributeShapes::getData();
+        foreach ($shapes as $shape) {
+            if ($this->shape == $shape['id']) {
+                $data = $shape['name'];
             }
         }
 
         return $data;
+    }
+
+
+    // items
+    public function items()
+    {
+        return $this->hasMany('App\Models\AttributeItem', 'attribute_id');
     }
 }
