@@ -42,5 +42,11 @@ Route::name('admin.')->group(function () {
         Route::get('trash/attribute/restore/{id}', [App\Http\Controllers\Backend\Ecom\AttributeController::class, 'restore'])->name('attribute.restore');
         Route::delete('trash/attribute/delete/{id}', [App\Http\Controllers\Backend\Ecom\AttributeController::class, 'forceDelete'])->name('attribute.forcedelete');
         
+        // tags
+        Route::resource('tag', App\Http\Controllers\Backend\TagController::class);
+        Route::get('trash/tag', [App\Http\Controllers\Backend\TagController::class, 'trash'])->name('tag.trash');
+        Route::get('trash/tag/restore/{id}', [App\Http\Controllers\Backend\TagController::class, 'restore'])->name('tag.restore');
+        Route::delete('trash/tag/delete/{id}', [App\Http\Controllers\Backend\TagController::class, 'forceDelete'])->name('tag.forcedelete');
+        
     });
 });

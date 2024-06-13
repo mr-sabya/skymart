@@ -15,6 +15,8 @@
     <meta property="og:image" content="">
     <meta name="format-detection" content="telephone=no">
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <!-- PAGE TITLE HERE -->
     <title>Yash Admin Sales Management System</title>
     <!-- FAVICONS ICON -->
@@ -155,6 +157,15 @@
 
     <!-- Toastr -->
     <script src="{{ asset('assets/backend/vendor/toastr/js/toastr.min.js') }}"></script>
+
+    <!-- CSRF protection for AJAX -->
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
 
 
     @yield('scripts')
