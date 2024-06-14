@@ -56,5 +56,9 @@ Route::name('admin.')->group(function () {
         Route::get('trash/tag/restore/{id}', [App\Http\Controllers\Backend\TagController::class, 'restore'])->name('tag.restore');
         Route::delete('trash/tag/delete/{id}', [App\Http\Controllers\Backend\TagController::class, 'forceDelete'])->name('tag.forcedelete');
         
+        
+        // product
+        Route::resource('product', App\Http\Controllers\Backend\Ecom\ProductController::class);
+        
     });
 });

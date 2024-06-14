@@ -39,6 +39,9 @@
     <!-- Toastr -->
     <link href="{{ asset('assets/backend/vendor/toastr/css/toastr.min.css') }}" rel="stylesheet">
 
+    <!-- Summernote -->
+    <link href="{{ asset('assets/backend/vendor/summernote/summernote-lite.css')}}" rel="stylesheet">
+
     <!-- Style css -->
     <link href="{{ asset('assets/backend/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/backend/css/custom.css') }}" rel="stylesheet">
@@ -157,6 +160,9 @@
 
     <!-- Toastr -->
     <script src="{{ asset('assets/backend/vendor/toastr/js/toastr.min.js') }}"></script>
+
+    <!-- Summernote -->
+    <script src="{{ asset('assets/backend/vendor/summernote/summernote-lite.js') }}"></script>
 
     <!-- CSRF protection for AJAX -->
     <script>

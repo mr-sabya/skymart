@@ -26813,7 +26813,7 @@ button {
   position: relative;
   border: 0rem solid transparent;
   border-radius: 0.625rem;
-  height: calc(100% - 25px);
+  /* height: calc(100% - 25px); */
   border: 1px solid #E6E6E6; }
   @media only screen and (max-width: 35.9375rem) {
     .card {

@@ -1,5 +1,5 @@
 <div class="form-group">
-    <label for="{{ $name }}">{{ $title }}</label>
+    <label for="">{{ $title }}</label>
     <div class="card-input-image {{ isset($value) ? 'active' : '' }}" id="{{ $cardid }}">
         <input type="file" id="{{ $name }}" name="{{ $name }}" class="input-image" accept=".png, .jpg, .jpeg" onchange="onchange_value('{{ $name }}', '{{ $cardid }}')" />
         <label for="{{ $name }}" class="label-upload-image">
