@@ -22,5 +22,8 @@
         <img src="" class="image-preview" alt="" />
         @endif
     </div>
+    @if($errors->has($name))
+    <small id="{{$name}}_error" class="text-danger">{{ $errors->first($name)}}</small>
+    @endif
 
 </div>

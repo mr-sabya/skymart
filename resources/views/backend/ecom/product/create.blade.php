@@ -11,13 +11,13 @@
                     <h4 class="card-title">{{ $title }}</h4>
                     <p class="m-0 subtitle">Add New <code>{{ $title }}</code></p>
                 </div>
-                <a href="{{ route('admin.brand.index')}}" class="btn btn-primary"><i class="fa-solid fa-bars me-2"></i>{{ $list_page }}</a>
+                <a href="{{ route('admin.product.index')}}" class="btn btn-primary"><i class="fa-solid fa-bars me-2"></i>{{ $list_page }}</a>
             </div>
         </div>
     </div>
 
     <div class="col-lg-12">
-        <form action="{{ route('admin.brand.store') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('admin.product.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-lg-8">
@@ -64,9 +64,11 @@
                                     <x-backend.input-text title="Actual Price" name="actual_price" value="{{ old('actual_price') }}"></x-backend.input-text>
                                 </div>
                                 <div class="col-lg-4">
-                                    <x-backend.input-text title="Off(%)" name="off" value="{{ old('off') }}"></x-backend.input-text>
+                                    <x-backend.input-number title="Off(%)" name="off" value="{{ old('off') }}"></x-backend.input-number>
                                 </div>
                             </div>
+
+                            <x-backend.select2 title="Attributes" name="attribute[]" id="attribute" :items=$attributes></x-backend.select2>
                         </div>
                     </div>
 
@@ -157,6 +159,34 @@
         placeholder: 'Write down product description',
         tabsize: 2,
         height: 500
+    });
+
+    $('#attribute').select2({
+        placeholder: "Select attributes",
+        allowClear: true
+    });
+
+    $('#actual_price').keyup(function() {
+        if ($('#price').val() != '') {
+            let price = parseFloat($('#price').val()).toFixed(2);
+            let actual_price = parseFloat($(this).val()).toFixed(2);
+
+            let diff = actual_price - price;
+            let off = parseInt((diff * 100) / actual_price);
+
+            $('#off').val(off);
+        }
+
+    });
+
+
+    $('#off').keyup(function() {
+        let actual_price = parseFloat($('#actual_price').val()).toFixed(2);
+        let off = parseInt($('#off').val());
+
+        let percentage = parseFloat((off * actual_price) / 100).toFixed(2);
+        let price = actual_price - percentage;
+        $('#price').val(price);
     });
 </script>
 @endsection

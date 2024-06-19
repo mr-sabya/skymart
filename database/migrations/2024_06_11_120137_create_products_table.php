@@ -22,8 +22,8 @@ return new class extends Migration
             $table->date('exp_date')->nullable();
             $table->integer('stock');
             $table->decimal('price', 10, 2);
-            $table->decimal('actual_price', 10, 2);
-            $table->integer('off');
+            $table->decimal('actual_price', 10, 2)->nullable();
+            $table->integer('off')->nullable();
             $table->string('short_description');
             $table->longText('description');
             $table->string('image');

@@ -42,6 +42,9 @@
     <!-- Summernote -->
     <link href="{{ asset('assets/backend/vendor/summernote/summernote-lite.css')}}" rel="stylesheet">
 
+    <!-- select2 -->
+    <link href="{{ asset('assets/backend/vendor/select2/css/select2.min.css') }}" rel="stylesheet">
+
     <!-- Style css -->
     <link href="{{ asset('assets/backend/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/backend/css/custom.css') }}" rel="stylesheet">
@@ -163,6 +166,10 @@
 
     <!-- Summernote -->
     <script src="{{ asset('assets/backend/vendor/summernote/summernote-lite.js') }}"></script>
+
+
+    <!-- Summernote -->
+    <script src="{{ asset('assets/backend/vendor/select2/js/select2.full.min.js') }}"></script>
 
     <!-- CSRF protection for AJAX -->
     <script>

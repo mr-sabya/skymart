@@ -44,7 +44,7 @@ Route::name('admin.')->group(function () {
         
         // attribute item
         Route::get('attribute/items/{attribute}', [App\Http\Controllers\Backend\Ecom\AttributeItemController::class, 'index'])->name('attribute-item.index');
-
+        
         Route::post('attribute-items/store', [App\Http\Controllers\Backend\Ecom\AttributeItemController::class, 'store'])->name('attribute-item.store');
         Route::get('attribute-items/{id}/edit', [App\Http\Controllers\Backend\Ecom\AttributeItemController::class, 'edit'])->name('attribute-item.edit');
         Route::put('attribute-items/update/{id}', [App\Http\Controllers\Backend\Ecom\AttributeItemController::class, 'update'])->name('attribute-item.update');
@@ -59,6 +59,15 @@ Route::name('admin.')->group(function () {
         
         // product
         Route::resource('product', App\Http\Controllers\Backend\Ecom\ProductController::class);
+        
+        // product image
+        Route::get('images/product/{product}', [App\Http\Controllers\Backend\Ecom\ProductImageController::class, 'index'])->name('product-image.index');
+        Route::get('images/product/{product}/create', [App\Http\Controllers\Backend\Ecom\ProductImageController::class, 'create'])->name('product-image.create');
+        Route::post('images/product/store', [App\Http\Controllers\Backend\Ecom\ProductImageController::class, 'store'])->name('product-image.store');
+        Route::get('images/product/{id}/edit', [App\Http\Controllers\Backend\Ecom\ProductImageController::class, 'edit'])->name('product-image.edit');
+        Route::put('images/product/update/{id}', [App\Http\Controllers\Backend\Ecom\ProductImageController::class, 'update'])->name('product-image.update');
+        Route::delete('images/product/{id}', [App\Http\Controllers\Backend\Ecom\ProductImageController::class, 'destroy'])->name('product-image.destroy');
+
         
     });
 });

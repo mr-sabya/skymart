@@ -7,7 +7,9 @@ use App\Models\Attribute;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
+use App\Utilities\FileUploadHelper;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 
 class ProductController extends Controller
 {
@@ -31,7 +33,7 @@ class ProductController extends Controller
                 ->addIndexColumn()
                 ->make(true);
         }
-        // return Product::with('categories')->get();
+        // return Product::with('attributes')->get();
 
         return view('backend.ecom.product.index', compact('title', 'list_page'));
     }
@@ -54,7 +56,26 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'slug' => 'required|string|max:255|unique:products',
+            'sku' => 'required|string|max:255|unique:products',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'stock' => 'required',
+            'price' => 'required',
+            'short_description' => 'required|string|max:255',
+            'description' => 'required',
+        ]);
+
+        $data = $request->all();
+        if ($request->image && $request->image instanceof UploadedFile) {
+            $data['image'] = FileUploadHelper::store($request->image, 'products');
+        }
+        $product = Product::create($data);
+        $product->categories()->attach($request->category);
+        $product->attributes()->attach($request->attribute);
+
+        return redirect()->route('admin.product.show', $product->id)->with('success', 'Product has been created successfully');
     }
 
     /**
@@ -62,7 +83,10 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $product = Product::findOrFail(intval($id));
+        $title = $product->name;
+        $list_page = "Products";
+        return view('backend.ecom.product.show', compact('title', 'list_page', 'product'));
     }
 
     /**
