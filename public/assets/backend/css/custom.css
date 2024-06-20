@@ -195,3 +195,17 @@ input[type=color] {
     top: calc(1.25rem / 2);
     left: 3.1rem;
 }
+
+.card-top{
+    display: flex;
+    justify-content: end;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.card-top .default-tab .nav{
+    border-bottom: none;
+}
+
+.card-top .default-tab .nav .nav-item .nav-link{
+    padding: 10px 20px;
+}

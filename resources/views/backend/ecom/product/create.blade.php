@@ -143,10 +143,6 @@
             </div>
         </form>
     </div>
-
-
-
-</div>
 </div>
 <!-- Column ends -->
 

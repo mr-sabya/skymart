@@ -6,16 +6,29 @@
     <!-- Column starts -->
     <div class="col-xl-12">
         <div class="card dz-card">
+            <div class="card-top">
+                <div class="default-tab">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.product-image.index', $product->id) }}"><i class="la la-image me-2"></i> Image({{ $product->images->count() }})</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.product-info.index', $product->id) }}"><i class="la la-info-circle me-2"></i> Info({{ $product->infos->count() }})</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.product-image.index', $product->id) }}"><i class="la la-list-ul me-2"></i> Variations({{ $product->infos->count() }})</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
             <div class="card-header flex-wrap d-flex justify-content-between">
                 <div>
                     <h4 class="card-title">{{ $title }}</h4>
                     <p class="m-0 subtitle">All <code>{{ $list_page }}</code></p>
                 </div>
-                <div>
-                    <a href="{{ route('admin.product-image.index', $product->id) }}" class="btn btn-primary"><i class="fa-regular fa-image me-2"></i>Image</a>
-                    <a href="{{ route('admin.product.create')}}" class="btn btn-primary"><i class="fa-solid fa-circle-info me-2"></i> Info</a>
-                    <a href="{{ route('admin.product.create')}}" class="btn btn-primary"><i class="fa-solid fa-list me-2"></i>Variations</a>
-                </div>
+               
                 <div>
                     <a href="{{ route('admin.product.edit', $product->id)}}" class="btn btn-primary"><i class="fa-solid fa-pencil-alt me-2"></i>Edit</a>
                     <a href="{{ route('admin.product.create')}}" class="btn btn-danger"><i class="fa-solid fa-trash me-2"></i>Delete</a>
@@ -41,7 +54,7 @@
                                                 <img class="img-fluid rounded " src="{{ getFileUrl($image->image)}}" alt="">
                                             </div>
                                             @endforeach
-                                            
+
                                         </div>
                                         <div class="tab-slide-content new-arrival-product mb-4 mb-xl-0">
                                             <!-- Nav tabs -->
@@ -54,7 +67,7 @@
                                                     <a href="#{{$loop->index}}" class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#image_{{ $image->id }}" role="tab" aria-controls="image_{{ $image->id }}" aria-selected="false"><img class="img-fluid me-2 rounded" src="{{ getFileUrl($image->image)}}" alt="" width="80"></a>
                                                 </li>
                                                 @endforeach
-                                                
+
                                             </ul>
                                         </div>
                                     </div>

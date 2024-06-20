@@ -11,20 +11,18 @@
                     <h4 class="card-title">{{ $title }}</h4>
                     <p class="m-0 subtitle">Edit <code>{{ $title }}</code></p>
                 </div>
-                <a href="{{ route('admin.attribute.index')}}" class="btn btn-primary"><i class="fa-solid fa-bars me-2"></i>{{ $list_page }}</a>
+                <a href="{{ route('admin.product-info.index', $product->id)}}" class="btn btn-primary"><i class="fa-solid fa-bars me-2"></i>{{ $list_page }}</a>
             </div>
 
             <!-- /tab-content -->
 
             <div class="card-body pt-0">
 
-                <form action="{{ route('admin.attribute.update', $attribute->id) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('admin.product-info.update', $info->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                    <x-backend.input-text title="Name" name="name" value="{{ $attribute->name }}"></x-backend.input-text>
-                    <x-backend.static-select-option title="Type" name="type" :items=$types value="{{ $attribute->type }}"></x-backend.static-select-option>
-                    <x-backend.static-select-option title="Shape" name="shape" :items=$shapes value="{{ $attribute->shape }}"></x-backend.static-select-option>
-
+                    <x-backend.input-text title="Title" name="title" value="{{ $info->title }}"></x-backend.input-text>
+                    <x-backend.input-text title="Info" name="info" value="{{ $info->info }}"></x-backend.input-text>
 
                     <button type="submit" class="btn btn-primary">Save</button>
                 </form>
@@ -35,10 +33,10 @@
         </div>
     </div>
     <!-- Column ends -->
-</div>
 
-@endsection
 
-@section('scripts')
+    @endsection
 
-@endsection
+    @section('scripts')
+
+    @endsection

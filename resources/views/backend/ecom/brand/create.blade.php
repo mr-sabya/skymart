@@ -35,10 +35,10 @@
         </div>
     </div>
     <!-- Column ends -->
+</div>
 
+@endsection
 
-    @endsection
+@section('scripts')
 
-    @section('scripts')
-
-    @endsection
+@endsection

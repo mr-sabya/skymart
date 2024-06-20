@@ -24,7 +24,9 @@ class ProductController extends Controller
         if (request()->ajax()) {
             return datatables()->of(Product::latest()->get())
                 ->addColumn('action', function ($data) {
-                    $button = '<a href="' . route('admin.tag.edit', $data->id) . '" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa-solid fa-pencil-alt"></i></a>';
+                    $button = '<a href="' . route('admin.product.edit', $data->id) . '" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa-solid fa-pencil-alt"></i></a>';
+                    $button .= '&nbsp;&nbsp;';
+                    $button .= '<a href="'. route('admin.product.show', $data->id) .'" class="btn btn-info shadow btn-xs sharp me-1"><i class="fa-solid fa-eye"></i></a>';
                     $button .= '&nbsp;&nbsp;';
                     $button .= '<a href="javascript:void(0)" class="delete btn btn-danger shadow btn-xs sharp" data-url="' . route('admin.tag.destroy', $data->id) . '"><i class="fa-solid fa-trash"></i></a>';
                     return $button;
@@ -33,7 +35,7 @@ class ProductController extends Controller
                 ->addIndexColumn()
                 ->make(true);
         }
-        // return Product::with('attributes')->get();
+        // return Product::with('infos', 'images')->get();
 
         return view('backend.ecom.product.index', compact('title', 'list_page'));
     }
