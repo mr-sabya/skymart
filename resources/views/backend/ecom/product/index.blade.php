@@ -25,8 +25,13 @@
                         <thead>
                             <tr>
                                 <th>#</th>
+                                <th>Image</th>
                                 <th>Name</th>
-                                <th>Slug</th>
+                                <th>SKU</th>
+                                <th>Price</th>
+                                <th>Actual Price</th>
+                                <th>Variants</th>
+                                <th>Sale</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -96,12 +101,32 @@
                 searchable: false
             },
             {
+                data: 'show_image',
+                name: 'show_image'
+            },
+            {
                 data: 'name',
                 name: 'name'
             },
             {
-                data: 'slug',
-                name: 'slug'
+                data: 'sku',
+                name: 'sku'
+            },
+            {
+                data: 'price',
+                name: 'price'
+            },
+            {
+                data: 'actual_price',
+                name: 'actual_price'
+            },
+            {
+                data: 'count_variants',
+                name: 'count_variants'
+            },
+            {
+                data: 'sale_count',
+                name: 'sale_count'
             },
             {
                 data: 'action',

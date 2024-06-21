@@ -65,8 +65,17 @@ class Product extends Model
 
     public function checkCategory($id)
     {
-        $category = $this->categories()->where('id', $id)->first();
+        $category = $this->categories()->where('category_id', $id)->first();
         if($category){
+            return true;
+        }
+        return false;
+    }
+
+    public function checkAttribute($id = NULL)
+    {
+        $attribute = $this->attributes()->where('attribute_id', $id)->first();
+        if($attribute){
             return true;
         }
         return false;

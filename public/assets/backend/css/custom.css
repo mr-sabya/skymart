@@ -214,3 +214,8 @@ input[type=color] {
     width: 20px;
     height: 20px;
 }
+
+.form-control.disabled{
+    background: #e4e4e4;
+    cursor: no-drop;
+}
