@@ -19,7 +19,7 @@ class AttributeItemController extends Controller
         $attribute = Attribute::findOrFail(intval($attribute));
         $title = $attribute->name;
         $list_page = "Attribute Items";
-        $items = AttributeItem::orderBy('id', 'DESC')->get();
+        $items = AttributeItem::orderBy('id', 'DESC')->where('attribute_id', $attribute->id)->get();
         return view('backend.ecom.attributeitem.index', compact('title', 'list_page', 'attribute', 'items'));
     }
 

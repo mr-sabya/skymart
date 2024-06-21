@@ -50,7 +50,7 @@
             </li>
             <li class="menu-title">OUR FEATURES</li>
             
-            <li class="{{ Route::is('admin.product.*') || Route::is('admin.category.*') || Route::is('admin.brand.*') || Route::is('admin.attribute.*') || Route::is('admin.attribute-item.*') ? 'mm-active' : '' }}">
+            <li class="{{ Route::is('admin.product.*') || Route::is('admin.product-image.*') || Route::is('admin.product-info.*') || Route::is('admin.product-variant.*') || Route::is('admin.category.*') || Route::is('admin.brand.*') || Route::is('admin.attribute.*') || Route::is('admin.attribute-item.*') ? 'mm-active' : '' }}">
                 <a class="has-arrow " href="javascript:void(0);">
                     <div class="menu-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -63,8 +63,8 @@
                     <span class="nav-text">Shop</span>
                 </a>
                 <ul>
-                    <li class="{{ Route::is('admin.product.*') ? 'mm-active' : '' }}">
-                        <a class="{{ Route::is('admin.product.*') ? 'mm-active' : '' }}" href="{{ route('admin.product.index')}}">Products</a>
+                    <li class="{{ Route::is('admin.product.*') || Route::is('admin.product-image.*') || Route::is('admin.product-info.*') || Route::is('admin.product-variant.*') ? 'mm-active' : '' }}">
+                        <a class="{{ Route::is('admin.product.*') || Route::is('admin.product-image.*') || Route::is('admin.product-info.*') || Route::is('admin.product-variant.*') ? 'mm-active' : '' }}" href="{{ route('admin.product.index')}}">Products</a>
                     </li>
                     <li class="{{ Route::is('admin.category.*') ? 'mm-active' : '' }}">
                         <a class="{{ Route::is('admin.category.*') ? 'mm-active' : '' }}" href="{{ route('admin.category.index') }}">Category</a>

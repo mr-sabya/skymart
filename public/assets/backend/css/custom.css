@@ -209,3 +209,8 @@ input[type=color] {
 .card-top .default-tab .nav .nav-item .nav-link{
     padding: 10px 20px;
 }
+
+.color{
+    width: 20px;
+    height: 20px;
+}

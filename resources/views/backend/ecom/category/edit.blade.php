@@ -33,7 +33,7 @@
                         </div>
                     </div>
 
-                    <x-backend.select-option title="Parent" name="parent_id" :items=$categories value="{{ $category->parent_id }}"></x-backend.select-option>
+                    <x-backend.select-option-m2m title="Parent" name="parent_id" :items=$categories value="{{ $category->parent_id }}"></x-backend.select-option-m2m>
 
                     <x-backend.input-check title="Featured" name="is_featured" value="{{ $category->is_featured }}"></x-backend.input-check>
 

@@ -87,5 +87,15 @@ Route::name('admin.')->group(function () {
             Route::put('/update/{id}', [App\Http\Controllers\Backend\Ecom\ProductInfoController::class, 'update'])->name('update');
             Route::delete('/delete/{id}', [App\Http\Controllers\Backend\Ecom\ProductInfoController::class, 'destroy'])->name('destroy');
         });
+        
+        // product variations
+        Route::prefix('variants/product')->name('product-variant.')->group(function () {
+            Route::get('/{product}', [App\Http\Controllers\Backend\Ecom\ProductVariationController::class, 'index'])->name('index');
+            Route::get('/{product}/create', [App\Http\Controllers\Backend\Ecom\ProductVariationController::class, 'create'])->name('create');
+            Route::post('/store', [App\Http\Controllers\Backend\Ecom\ProductVariationController::class, 'store'])->name('store');
+            Route::get('/{id}/edit', [App\Http\Controllers\Backend\Ecom\ProductVariationController::class, 'edit'])->name('edit');
+            Route::put('/update/{id}', [App\Http\Controllers\Backend\Ecom\ProductVariationController::class, 'update'])->name('update');
+            Route::delete('/delete/{id}', [App\Http\Controllers\Backend\Ecom\ProductVariationController::class, 'destroy'])->name('destroy');
+        });
     });
 });

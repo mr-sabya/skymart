@@ -17,7 +17,7 @@
                         </li>
                         
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.product-image.index', $product->id) }}"><i class="la la-list-ul me-2"></i> Variations({{ $product->infos->count() }})</a>
+                            <a class="nav-link" href="{{ route('admin.product-variant.index', $product->id) }}"><i class="la la-list-ul me-2"></i> Variations({{ $product->variants->count() }})</a>
                         </li>
                     </ul>
 
