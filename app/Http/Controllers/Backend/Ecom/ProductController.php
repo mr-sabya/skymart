@@ -37,7 +37,7 @@ class ProductController extends Controller
                     $button .= '&nbsp;&nbsp;';
                     $button .= '<a href="' . route('admin.product.show', $data->id) . '" class="btn btn-info shadow btn-xs sharp me-1"><i class="fa-solid fa-eye"></i></a>';
                     $button .= '&nbsp;&nbsp;';
-                    $button .= '<a href="javascript:void(0)" class="delete btn btn-danger shadow btn-xs sharp" data-url="' . route('admin.tag.destroy', $data->id) . '"><i class="fa-solid fa-trash"></i></a>';
+                    $button .= '<a href="javascript:void(0)" class="delete btn btn-danger shadow btn-xs sharp" data-url="' . route('admin.product.destroy', $data->id) . '"><i class="fa-solid fa-trash"></i></a>';
                     return $button;
                 })
                 ->rawColumns(['show_image', 'count_variants', 'sale_count', 'action'])
@@ -163,6 +163,9 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product = Product::findOrFail(intval($id));
+        $product->delete();
+
+        return redirect()->route('admin.product.index')->with('success', 'Product has been deleted successfully');
     }
 }
