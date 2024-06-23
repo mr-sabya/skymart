@@ -816,9 +816,17 @@ $('#get_color').change(function () {
 
 });
 
+//remove color from input
 $('#remove_color').click(function () {
 	id = $(this).attr('data-value');
 	$('#get_color').val('#f6f7f7');
 	$('#' + id).val('');
 	$(this).addClass('d-none');
 });
+
+
+// shop link
+$('#shop_page_link').click(function () {
+	$('#link').val('{{ route("shop.index") }}');
+	$('#link_error').html('');
+})

@@ -27,7 +27,7 @@ class BrandController extends Controller
     {
         $title = "Brand";
         $list_page = "Brands";
-        $brands = Brand::withTrashed()->where('deleted_at', '!=', NULL)->get();
+        $brands = Brand::onlyTrashed()->get();
         return view('backend.ecom.brand.trash', compact('title', 'list_page', 'brands'));
     }
 

@@ -8,10 +8,10 @@
         <div class="card dz-card">
             <div class="card-header flex-wrap d-flex justify-content-between">
                 <div>
-                    <h4 class="card-title">Category</h4>
-                    <p class="m-0 subtitle">Add New <code>Category</code></p>
+                    <h4 class="card-title">{{ $title }}</h4>
+                    <p class="m-0 subtitle">Add New <code>{{ $title }}</code></p>
                 </div>
-                <a href="{{ route('admin.category.index')}}" class="btn btn-primary"><i class="fa-solid fa-bars me-2"></i>Categories</a>
+                <a href="{{ route('admin.category.index')}}" class="btn btn-primary"><i class="fa-solid fa-bars me-2"></i>{{ $list_page }}</a>
             </div>
 
             <!-- /tab-content -->
@@ -35,7 +35,7 @@
                     <x-backend.select-option-m2m title="Parent" name="parent_id" :items=$categories></x-backend.select-option-m2m>
                     <x-backend.input-check title="Featured" name="is_featured"></x-backend.input-check>
 
-                
+
                     <button class="btn btn-primary">Save</button>
                 </form>
             </div>

@@ -11,31 +11,45 @@
                     <h4 class="card-title">{{ $title }}</h4>
                     <p class="m-0 subtitle">All <code>{{ $list_page }}</code></p>
                 </div>
-                <a href="{{ route('admin.product.create')}}" class="btn btn-primary"><i class="fa-solid fa-plus me-2"></i>{{ $title }}</a>
+                <a href="{{ route('admin.slider.create')}}" class="btn btn-primary"><i class="fa-solid fa-plus me-2"></i>{{ $title }}</a>
             </div>
 
             <!-- /tab-content -->
 
             <div class="card-body pt-0">
 
-                <x-backend.card-menu mainlink="admin.product.index" trashlink="admin.product.trash" model="Product"></x-backend.card-menu>
+                <x-backend.card-menu mainlink="admin.slider.index" trashlink="admin.slider.trash" model="Slider"></x-backend.card-menu>
 
                 <div class="table-responsive">
-                    <table id="data_table" class="display table image-table w-100" style="min-width: 845px">
+                    <table id="example3" class="display table image-table" style="min-width: 845px">
                         <thead>
                             <tr>
                                 <th>#</th>
                                 <th>Image</th>
-                                <th>Name</th>
-                                <th>SKU</th>
-                                <th>Price</th>
-                                <th>Actual Price</th>
-                                <th>Variants</th>
-                                <th>Sale</th>
+                                <th>Title</th>
+                                <th>Offer Text</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
+                        <tbody>
 
+                            @foreach($sliders as $slider)
+                            <tr>
+                                <td>{{ $loop->index + 1 }}</td>
+                                <td><img class="item-image" src="{{ getFileUrl($slider->image) }}" alt=""></td>
+                                <td>{{ $slider->title }}</td>
+                                <td>{{ $slider->offer_text }}</td>
+
+                                <td>
+                                    <div class="d-flex">
+                                        <a href="{{ route('admin.slider.restore', $slider->id)}}" class="btn btn-primary shadow btn-xs sharp me-1 w-auto px-2"><i class="fa-solid fa-arrows-rotate"></i> Restore</a>
+                                        <a href="javascript:void(0)" class="delete btn btn-danger shadow btn-xs sharp" data-url="{{ route('admin.slider.forcedelete', $slider->id) }}"><i class="fa-solid fa-trash"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            @endforeach
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -79,61 +93,6 @@
         let url = $(this).attr('data-url');
         $('#delete_form').attr('action', url);
         $('#delete_modal').modal('show');
-    });
-
-
-    $('#data_table').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: {
-            url: "{{ route('admin.product.index') }}",
-        },
-        language: {
-            paginate: {
-                next: '<i class="fa-solid fa-angle-right"></i>',
-                previous: '<i class="fa-solid fa-angle-left"></i>'
-            }
-        },
-        columns: [{
-                data: 'DT_RowIndex',
-                name: 'DT_RowIndex',
-                orderable: false,
-                searchable: false
-            },
-            {
-                data: 'show_image',
-                name: 'show_image'
-            },
-            {
-                data: 'name',
-                name: 'name'
-            },
-            {
-                data: 'sku',
-                name: 'sku'
-            },
-            {
-                data: 'price',
-                name: 'price'
-            },
-            {
-                data: 'actual_price',
-                name: 'actual_price'
-            },
-            {
-                data: 'count_variants',
-                name: 'count_variants'
-            },
-            {
-                data: 'sale_count',
-                name: 'sale_count'
-            },
-            {
-                data: 'action',
-                name: 'action',
-                orderable: false
-            }
-        ]
     });
 </script>
 @endsection

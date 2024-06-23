@@ -154,7 +154,7 @@ input[type=color] {
     position: relative;
 }
 
-.dynamic-check .subcat-box::before{
+.dynamic-check .subcat-box::before {
     content: '';
     width: 15px;
     height: 1px;
@@ -178,11 +178,11 @@ input[type=color] {
     margin-left: 35px;
 }
 
-.dynamic-check .child{
+.dynamic-check .child {
     margin-left: 70px;
 }
 
-.dynamic-check .child-box{
+.dynamic-check .child-box {
     position: relative;
 }
 
@@ -196,26 +196,36 @@ input[type=color] {
     left: 3.1rem;
 }
 
-.card-top{
+.card-top {
     display: flex;
     justify-content: end;
     border-bottom: 1px solid #dee2e6;
 }
 
-.card-top .default-tab .nav{
+.card-top .default-tab .nav {
     border-bottom: none;
 }
 
-.card-top .default-tab .nav .nav-item .nav-link{
+.card-top .default-tab .nav .nav-item .nav-link {
     padding: 10px 20px;
 }
 
-.color{
+.color {
     width: 20px;
     height: 20px;
 }
 
-.form-control.disabled{
+.form-control.disabled {
     background: #e4e4e4;
     cursor: no-drop;
+}
+
+.dynamic-input .input-link{
+    position: relative;
+}
+
+.dynamic-input .input-link button{
+    position: absolute;
+    top: 0;
+    right: 0;
 }

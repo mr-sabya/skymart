@@ -2,7 +2,7 @@
 $model_prefix="App\Models";
 $get_modal = $model_prefix.'\\'.$model;
 $items = $get_modal::count();
-$trashed_items = $get_modal::withTrashed()->where('deleted_at', '!=', NULL)->count();
+$trashed_items = $get_modal::onlyTrashed()->count();
 @endphp
 
 <ul class="nav nav-pills mb-4 light">

@@ -15,15 +15,19 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $title = 'Category';
+        $list_page = 'Categories';
         $categories = Category::with('childs')->where('parent_id', NULL)->get();
-        return view('backend.ecom.category.index', compact('categories'));
+        return view('backend.ecom.category.index', compact('title', 'list_page', 'categories'));
     }
 
     // trash item list
     public function trash()
     {
-        $categories = Category::withTrashed()->where('deleted_at', '!=', NULL)->get();
-        return view('backend.ecom.category.trash', compact('categories'));
+        $title = 'Category';
+        $list_page = 'Categories';
+        $categories = Category::onlyTrashed()->get();
+        return view('backend.ecom.category.trash', compact('title', 'list_page', 'categories'));
     }
 
     /**
@@ -31,8 +35,10 @@ class CategoryController extends Controller
      */
     public function create()
     {
+        $title = 'Category';
+        $list_page = 'Categories';
         $categories = Category::with('childs')->where('parent_id', NULL)->get();
-        return view('backend.ecom.category.create', compact('categories'));
+        return view('backend.ecom.category.create', compact('title', 'list_page', 'categories'));
     }
 
     /**
@@ -74,9 +80,11 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
+        $title = 'Category';
+        $list_page = 'Categories';
         $category = Category::findOrFail(intval($id));
         $categories = Category::with('childs')->where('parent_id', NULL)->get();
-        return view('backend.ecom.category.edit', compact('category', 'categories'));
+        return view('backend.ecom.category.edit', compact('title', 'list_page', 'category', 'categories'));
     }
 
     /**

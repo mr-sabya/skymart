@@ -7,30 +7,27 @@
             <div class="col-xl-8 col-lg-12">
                 <div class="home-slide-cover">
                     <div class="hero-slider-1 style-4 dot-style-1 dot-style-1-position-1">
-                        <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/imgs/slider/slider-3.png)">
+                        <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/frontend/imgs/slider/slider-3.png)">
                             <div class="slider-content">
                                 <h1 class="display-2 mb-40">
-                                    Pure Coffe<br />
-                                    Big discount
+                                    Pure Coffe Big discount
                                 </h1>
                                 <p class="mb-65">Save up to 50% off on your first order</p>
-                                <form class="form-subcriber d-flex">
-                                    <input type="email" placeholder="Your emaill address" />
-                                    <button class="btn" type="submit">Subscribe</button>
-                                </form>
+                                <div class="form-subcriber">
+                                    <a href="#" class="btn" type="submit">Shop Now</a>
+                                </div>
+
                             </div>
                         </div>
-                        <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/imgs/slider/slider-4.png)">
+                        <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/frontend/imgs/slider/slider-4.png)">
                             <div class="slider-content">
                                 <h1 class="display-2 mb-40">
-                                    Snacks box<br />
-                                    daily save
+                                    Snacks box daily save
                                 </h1>
                                 <p class="mb-65">Sign up for the daily newsletter</p>
-                                <form class="form-subcriber d-flex">
-                                    <input type="email" placeholder="Your emaill address" />
-                                    <button class="btn" type="submit">Subscribe</button>
-                                </form>
+                                <div class="form-subcriber">
+                                    <a href="#" class="btn" type="submit">Shop Now</a>
+                                </div>
                             </div>
                         </div>
                     </div>

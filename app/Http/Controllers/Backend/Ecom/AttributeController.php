@@ -26,7 +26,7 @@ class AttributeController extends Controller
     {
         $title = "Attribute";
         $list_page = "Attributes";
-        $attributes = Attribute::withTrashed()->where('deleted_at', '!=', NULL)->get();
+        $attributes = Attribute::onlyTrashed()->get();
         return view('backend.ecom.attribute.trash', compact('title', 'list_page', 'attributes'));
     }
 

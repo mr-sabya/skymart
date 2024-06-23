@@ -36,4 +36,12 @@ class FileUploadHelper
         }
         return $savedLocation;
     }
+
+    public static function delete($file): string
+    {
+        if (Storage::disk('public')->exists($file)) {
+            Storage::disk('public')->delete($file);
+        }
+        return true;
+    }
 }

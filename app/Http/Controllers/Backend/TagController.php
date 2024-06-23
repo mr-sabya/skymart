@@ -39,7 +39,7 @@ class TagController extends Controller
         $list_page = "Tags";
 
         if (request()->ajax()) {
-            return datatables()->of(Tag::withTrashed()->where('deleted_at', '!=', NULL)->get())
+            return datatables()->of(Tag::onlyTrashed()->get())
                 ->addColumn('action', function ($data) {
                     $button = '<a href="' . route('admin.tag.restore', $data->id) . '" class="btn btn-primary shadow btn-xs sharp me-1 w-auto px-2"><i class="fa-solid fa-arrows-rotate"></i> Restore</a>';
                     $button .= '&nbsp;&nbsp;';

@@ -8,10 +8,10 @@
         <div class="card dz-card">
             <div class="card-header flex-wrap d-flex justify-content-between">
                 <div>
-                    <h4 class="card-title">Category</h4>
-                    <p class="m-0 subtitle">All <code>Trash Categories</code></p>
+                    <h4 class="card-title">{{ $title }}</h4>
+                    <p class="m-0 subtitle">All <code>{{ $list_page }}</code></p>
                 </div>
-                <a href="{{ route('admin.category.create')}}" class="btn btn-primary"><i class="fa-solid fa-plus me-2"></i>Category</a>
+                <a href="{{ route('admin.category.create')}}" class="btn btn-primary"><i class="fa-solid fa-plus me-2"></i>{{ $title }}</a>
             </div>
 
             <!-- /tab-content -->

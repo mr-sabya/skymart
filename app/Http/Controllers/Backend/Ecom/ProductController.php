@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Utilities\FileUploadHelper;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -47,6 +48,37 @@ class ProductController extends Controller
         // return Product::with('infos', 'images')->get();
 
         return view('backend.ecom.product.index', compact('title', 'list_page'));
+    }
+
+
+    // trash item list
+    public function trash()
+    {
+        $title = "Product";
+        $list_page = "Products";
+
+        if (request()->ajax()) {
+            return datatables()->of(Product::onlyTrashed()->get())
+                ->addColumn('show_image', function ($data) {
+                    return '<img src="' . getFileUrl($data->image) . '" style="width: 50px"/>';
+                })
+                ->addColumn('count_variants', function ($data) {
+                    return $data->variants->count();
+                })
+                ->addColumn('sale_count', function ($data) {
+                    return 0;
+                })
+                ->addColumn('action', function ($data) {
+                    $button = '<a href="'. route('admin.product.restore', $data->id).'" class="btn btn-primary shadow btn-xs sharp me-1 w-auto px-2"><i class="fa-solid fa-arrows-rotate"></i> Restore</a>';
+                    $button .= '&nbsp;&nbsp;';
+                    $button .= '<a href="javascript:void(0)" class="delete btn btn-danger shadow btn-xs sharp w-auto" data-url="'. route('admin.product.forcedelete', $data->id).'"><i class="fa-solid fa-trash"></i></a>';
+                    return $button;
+                })
+                ->rawColumns(['show_image', 'count_variants', 'sale_count', 'action'])
+                ->addIndexColumn()
+                ->make(true);
+        }
+        return view('backend.ecom.product.trash', compact('title', 'list_page'));
     }
 
     /**
@@ -152,8 +184,8 @@ class ProductController extends Controller
             $data['image'] = FileUploadHelper::store($request->image, 'products');
         }
         $product->update($data);
-        $product->categories()->attach($request->category);
-        $product->attributes()->attach($request->attribute);
+        $product->categories()->sync($request->category);
+        $product->attributes()->sync($request->attribute);
 
         return redirect()->route('admin.product.show', $product->id)->with('success', 'Product has been updated successfully');
     }
@@ -167,5 +199,63 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()->route('admin.product.index')->with('success', 'Product has been deleted successfully');
+    }
+
+
+    /**
+     * restore the specified resource from storage.
+     */
+    public function restore(string $id)
+    {
+        $product = Product::withTrashed()->findOrFail(intval($id));
+        $product->restore();
+
+        return redirect()->route('admin.product.index')->with('success', 'Product has been restored successfully');
+    }
+
+
+     /**
+     * force delete the specified resource from storage.
+     */
+    public function forceDelete(string $id)
+    {
+        $product = Product::withTrashed()->findOrFail(intval($id));
+
+        // delete product images
+        if($product->images->count() > 0){
+            foreach($product->images as $image){
+
+                if (Storage::disk('public')->exists($image->image)) {
+                    Storage::disk('public')->delete($image->image);
+                }
+                
+                $image->forceDelete();
+            }
+        }
+
+        // delete product infos
+        if($product->infos->count() > 0){
+            foreach($product->infos as $info){
+                $info->forceDelete();
+            }
+        }
+
+        // delete product variants
+        if($product->variants->count() > 0){
+            foreach($product->variants as $variant){
+                $variant->forceDelete();
+            }
+        }
+
+        $product->categories()->detach();
+        $product->attributes()->detach();
+
+        if (Storage::disk('public')->exists($product->image)) {
+            Storage::disk('public')->delete($product->image);
+        }
+
+        $product->forceDelete();
+
+        return redirect()->route('admin.product.index')->with('success', 'Product has been deleted permanently');
     }
 }

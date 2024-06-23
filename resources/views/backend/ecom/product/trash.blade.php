@@ -86,7 +86,7 @@
         processing: true,
         serverSide: true,
         ajax: {
-            url: "{{ route('admin.product.index') }}",
+            url: "{{ route('admin.product.trash') }}",
         },
         language: {
             paginate: {

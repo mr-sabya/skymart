@@ -7,7 +7,7 @@
                     <input type="color" class="form-control" name="get_color" id="get_color" data-value="{{ $name }}" value="{{ isset($value) ? $value : '#f6f7f7' }}">
                 </div>
                 <div class="text">
-                    <label for="{{ $name }}">Select Color</label>
+                    <label for="get_color">Select Color</label>
                 </div>
             </div>
         </div>

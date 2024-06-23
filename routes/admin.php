@@ -67,6 +67,11 @@ Route::name('admin.')->group(function () {
 
         // product
         Route::resource('product', App\Http\Controllers\Backend\Ecom\ProductController::class);
+        Route::prefix('trash')->name('product.')->group(function () {
+            Route::get('/product', [App\Http\Controllers\Backend\Ecom\ProductController::class, 'trash'])->name('trash');
+            Route::get('/product/restore/{id}', [App\Http\Controllers\Backend\Ecom\ProductController::class, 'restore'])->name('restore');
+            Route::delete('/product/delete/{id}', [App\Http\Controllers\Backend\Ecom\ProductController::class, 'forceDelete'])->name('forcedelete');
+        });
 
         // product image
         Route::prefix('images/product')->name('product-image.')->group(function () {
@@ -87,7 +92,7 @@ Route::name('admin.')->group(function () {
             Route::put('/update/{id}', [App\Http\Controllers\Backend\Ecom\ProductInfoController::class, 'update'])->name('update');
             Route::delete('/delete/{id}', [App\Http\Controllers\Backend\Ecom\ProductInfoController::class, 'destroy'])->name('destroy');
         });
-        
+
         // product variations
         Route::prefix('variants/product')->name('product-variant.')->group(function () {
             Route::get('/{product}', [App\Http\Controllers\Backend\Ecom\ProductVariationController::class, 'index'])->name('index');
@@ -96,6 +101,15 @@ Route::name('admin.')->group(function () {
             Route::get('/{id}/edit', [App\Http\Controllers\Backend\Ecom\ProductVariationController::class, 'edit'])->name('edit');
             Route::put('/update/{id}', [App\Http\Controllers\Backend\Ecom\ProductVariationController::class, 'update'])->name('update');
             Route::delete('/delete/{id}', [App\Http\Controllers\Backend\Ecom\ProductVariationController::class, 'destroy'])->name('destroy');
+        });
+
+
+        // slider
+        Route::resource('slider', App\Http\Controllers\Backend\SliderController::class);
+        Route::prefix('trash')->name('slider.')->group(function () {
+            Route::get('/slider', [App\Http\Controllers\Backend\SliderController::class, 'trash'])->name('trash');
+            Route::get('/slider/restore/{id}', [App\Http\Controllers\Backend\SliderController::class, 'restore'])->name('restore');
+            Route::delete('/slider/delete/{id}', [App\Http\Controllers\Backend\SliderController::class, 'forceDelete'])->name('forcedelete');
         });
     });
 });
