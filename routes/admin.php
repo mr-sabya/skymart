@@ -111,5 +111,13 @@ Route::name('admin.')->group(function () {
             Route::get('/slider/restore/{id}', [App\Http\Controllers\Backend\SliderController::class, 'restore'])->name('restore');
             Route::delete('/slider/delete/{id}', [App\Http\Controllers\Backend\SliderController::class, 'forceDelete'])->name('forcedelete');
         });
+
+
+        Route::resource('banner', App\Http\Controllers\Backend\BannerController::class);
+        Route::prefix('trash')->name('banner.')->group(function () {
+            Route::get('/banner', [App\Http\Controllers\Backend\BannerController::class, 'trash'])->name('trash');
+            Route::get('/banner/restore/{id}', [App\Http\Controllers\Backend\BannerController::class, 'restore'])->name('restore');
+            Route::delete('/banner/delete/{id}', [App\Http\Controllers\Backend\BannerController::class, 'forceDelete'])->name('forcedelete');
+        });
     });
 });

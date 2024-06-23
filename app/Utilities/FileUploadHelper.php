@@ -18,7 +18,7 @@ class FileUploadHelper
      * @param oldPath $file_path
      * @return string stored location
      */
-    public static function store($file, $dir, $oldPath = null): string|array
+    public static function store($file, $dir, $oldPath = null)
     {
         if ($oldPath != null && Storage::disk('public')->exists($oldPath)) {
             Storage::disk('public')->delete($oldPath);
@@ -37,7 +37,7 @@ class FileUploadHelper
         return $savedLocation;
     }
 
-    public static function delete($file): string
+    public static function delete($file)
     {
         if (Storage::disk('public')->exists($file)) {
             Storage::disk('public')->delete($file);

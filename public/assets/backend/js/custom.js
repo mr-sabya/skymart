@@ -824,9 +824,3 @@ $('#remove_color').click(function () {
 	$(this).addClass('d-none');
 });
 
-
-// shop link
-$('#shop_page_link').click(function () {
-	$('#link').val('{{ route("shop.index") }}');
-	$('#link_error').html('');
-})

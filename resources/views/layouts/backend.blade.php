@@ -186,6 +186,15 @@
     <script src="{{ asset('assets/backend/js/custom.js') }}"></script>
     <script src="{{ asset('assets/backend/js/deznav-init.js') }}"></script>
 
+    <script>
+        var routeUrl = "{{ route('shop.index') }}";
+        // shop link
+        $('#shop_page_link').click(function() {
+            $('#link').val(routeUrl);
+            $('#link_error').html('');
+        })
+    </script>
+
     @if(Session::has('success'))
     <script>
         toastr.success("{{ Session::get('success')}}", "Success", {
