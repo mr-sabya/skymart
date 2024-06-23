@@ -224,11 +224,7 @@ class ProductController extends Controller
         // delete product images
         if($product->images->count() > 0){
             foreach($product->images as $image){
-
-                if (Storage::disk('public')->exists($image->image)) {
-                    Storage::disk('public')->delete($image->image);
-                }
-                
+                FileUploadHelper::delete($image->image);
                 $image->forceDelete();
             }
         }
@@ -250,9 +246,8 @@ class ProductController extends Controller
         $product->categories()->detach();
         $product->attributes()->detach();
 
-        if (Storage::disk('public')->exists($product->image)) {
-            Storage::disk('public')->delete($product->image);
-        }
+        // remove imgae
+        FileUploadHelper::delete($product->image);
 
         $product->forceDelete();
 

@@ -122,6 +122,10 @@ class AttributeItemController extends Controller
     {
         $item = AttributeItem::findOrFail(intval($id));
         $attribute = Attribute::where('id', $item->attribute_id)->firstOrFail();
+
+        if($item->image != NULL){
+            FileUploadHelper::delete($item->image);
+        }
         $item->forceDelete();
         return redirect()->route('admin.attribute-item.index', $attribute->id)->with('success', 'Attribute Item has been Deleted successfully');
     }

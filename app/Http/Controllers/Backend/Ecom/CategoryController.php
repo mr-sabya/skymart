@@ -173,6 +173,7 @@ class CategoryController extends Controller
         if($childs->count() > 0){
             return redirect()->route('admin.category.trash')->with('error', 'Delete child categories first!!');
         }else{
+            FileUploadHelper::delete($category->image);
             $category->forceDelete();
             return redirect()->route('admin.category.trash')->with('success', 'Category has been deleted permanently');
         }

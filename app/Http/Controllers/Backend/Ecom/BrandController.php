@@ -136,12 +136,9 @@ class BrandController extends Controller
     public function forceDelete($id)
     {
         $brand = Brand::withTrashed()->findOrFail(intval($id));
-
-        if (Storage::disk('public')->exists($brand->image)) {
-            Storage::disk('public')->delete($brand->image);
-        }
-
+        FileUploadHelper::delete($brand->image);
         $brand->forceDelete();
+
         return redirect()->route('admin.brand.trash')->with('success', 'Brand has been deleted permanently');
     }
 }

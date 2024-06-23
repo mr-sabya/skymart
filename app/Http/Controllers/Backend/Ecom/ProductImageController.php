@@ -103,9 +103,7 @@ class ProductImageController extends Controller
     {
         $image = ProductImage::findOrFail(intval($id));
         $product = Product::findOrFail(intval($image->product_id));
-        if (Storage::disk('public')->exists($image->image)) {
-            Storage::disk('public')->delete($image->image);
-        }
+        FileUploadHelper::delete($image->image);
         $image->forceDelete();
 
         return redirect()->route('admin.product-image.index', $product->id)->with('success', 'Product Image has been deleted successfully');
