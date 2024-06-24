@@ -43,7 +43,7 @@ class ProductImageController extends Controller
         $product = Product::findOrFail(intval($request->product_id));
         $request->validate([
             'name' => 'required|string|max:255',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
         ]);
 
         $data = $request->all();
@@ -83,7 +83,7 @@ class ProductImageController extends Controller
         $image = ProductImage::findOrFail(intval($id));
         $request->validate([
             'name' => 'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
         ]);
 
         $data = $request->all();

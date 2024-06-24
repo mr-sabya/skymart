@@ -49,7 +49,8 @@ class CategoryController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'slug' => 'required|string|max:255|unique:categories',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'icon' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
         ]);
 
         $data = $request->all();
@@ -98,13 +99,15 @@ class CategoryController extends Controller
             $request->validate([
                 'name' => 'required|string|max:255',
                 'slug' => 'required|string|max:255',
-                'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
+                'icon' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
             ]);
         } else {
             $request->validate([
                 'name' => 'required|string|max:255',
                 'slug' => 'required|string|max:255|unique:categories',
-                'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
+                'icon' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
             ]);
         }
 

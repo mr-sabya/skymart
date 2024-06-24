@@ -50,7 +50,7 @@ class SliderController extends Controller
             'offer_text' => 'required|string|max:255',
             'button_text' => 'required|string|max:255',
             'link' => 'required|string|max:255',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
         ]);
 
         $data = $request->all();
@@ -95,7 +95,7 @@ class SliderController extends Controller
             'offer_text' => 'required|string|max:255',
             'button_text' => 'required|string|max:255',
             'link' => 'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
         ]);
 
         $data = $request->all();
@@ -140,6 +140,6 @@ class SliderController extends Controller
         FileUploadHelper::delete($slider->image);
         $slider->forceDelete();
 
-        return redirect()->route('admin.slider.index')->with('success', 'Slider has beed Deleted suucessfully');
+        return redirect()->route('admin.slider.trash')->with('success', 'Slider has beed Deleted suucessfully');
     }
 }

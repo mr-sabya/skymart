@@ -103,7 +103,7 @@ class ProductController extends Controller
             'name' => 'required|string|max:255',
             'slug' => 'required|string|max:255|unique:products',
             'sku' => 'required|string|max:255|unique:products',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
             'stock' => 'required',
             'price' => 'required',
             'short_description' => 'required|string|max:255',
@@ -159,7 +159,7 @@ class ProductController extends Controller
             $request->validate([
                 'name' => 'required|string|max:255',
                 'slug' => 'required|string|max:255',
-                'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
                 'stock' => 'required',
                 'price' => 'required',
                 'short_description' => 'required|string|max:255',
@@ -169,7 +169,7 @@ class ProductController extends Controller
             $request->validate([
                 'name' => 'required|string|max:255',
                 'slug' => 'required|string|max:255|unique:products',
-                'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
                 'stock' => 'required',
                 'price' => 'required',
                 'short_description' => 'required|string|max:255',
@@ -251,6 +251,6 @@ class ProductController extends Controller
 
         $product->forceDelete();
 
-        return redirect()->route('admin.product.index')->with('success', 'Product has been deleted permanently');
+        return redirect()->route('admin.product.trash')->with('success', 'Product has been deleted permanently');
     }
 }

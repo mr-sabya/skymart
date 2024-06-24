@@ -41,8 +41,8 @@
                             <div class="featured-card">
                                 <img src="{{ url('assets/frontend/imgs/theme/icons/icon-1.svg') }}" alt="" />
                                 <h4>Best Prices & Offers</h4>
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form</p>
-                                <a href="#">Read more</a>
+                                <p class="mb-0">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form</p>
+                                <!-- <a href="#">Read more</a> -->
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 mb-24">
@@ -50,7 +50,7 @@
                                 <img src="{{ url('assets/frontend/imgs/theme/icons/icon-2.svg') }}" alt="" />
                                 <h4>Wide Assortment</h4>
                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form</p>
-                                <a href="#">Read more</a>
+                                <!-- <a href="#">Read more</a> -->
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 mb-24">
@@ -58,7 +58,7 @@
                                 <img src="{{ url('assets/frontend/imgs/theme/icons/icon-3.svg') }}" alt="" />
                                 <h4>Free Delivery</h4>
                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form</p>
-                                <a href="#">Read more</a>
+                                <!-- <a href="#">Read more</a> -->
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 mb-24">
@@ -66,7 +66,7 @@
                                 <img src="{{ url('assets/frontend/imgs/theme/icons/icon-4.svg') }}" alt="" />
                                 <h4>Easy Returns</h4>
                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form</p>
-                                <a href="#">Read more</a>
+                                <!-- <a href="#">Read more</a> -->
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 mb-24">
@@ -74,7 +74,7 @@
                                 <img src="{{ url('assets/frontend/imgs/theme/icons/icon-5.svg') }}" alt="" />
                                 <h4>100% Satisfaction</h4>
                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form</p>
-                                <a href="#">Read more</a>
+                                <!-- <a href="#">Read more</a> -->
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 mb-24">
@@ -82,7 +82,7 @@
                                 <img src="{{ url('assets/frontend/imgs/theme/icons/icon-6.svg') }}" alt="" />
                                 <h4>Great Daily Deal</h4>
                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form</p>
-                                <a href="#">Read more</a>
+                                <!-- <a href="#">Read more</a> -->
                             </div>
                         </div>
                     </div>

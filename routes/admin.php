@@ -112,12 +112,20 @@ Route::name('admin.')->group(function () {
             Route::delete('/slider/delete/{id}', [App\Http\Controllers\Backend\SliderController::class, 'forceDelete'])->name('forcedelete');
         });
 
-
+        // banner 
         Route::resource('banner', App\Http\Controllers\Backend\BannerController::class);
         Route::prefix('trash')->name('banner.')->group(function () {
             Route::get('/banner', [App\Http\Controllers\Backend\BannerController::class, 'trash'])->name('trash');
             Route::get('/banner/restore/{id}', [App\Http\Controllers\Backend\BannerController::class, 'restore'])->name('restore');
             Route::delete('/banner/delete/{id}', [App\Http\Controllers\Backend\BannerController::class, 'forceDelete'])->name('forcedelete');
+        });
+
+        // srvices for about page
+        Route::resource('service', App\Http\Controllers\Backend\ServiceController::class);
+        Route::prefix('trash')->name('service.')->group(function () {
+            Route::get('/service', [App\Http\Controllers\Backend\ServiceController::class, 'trash'])->name('trash');
+            Route::get('/service/restore/{id}', [App\Http\Controllers\Backend\ServiceController::class, 'restore'])->name('restore');
+            Route::delete('/service/delete/{id}', [App\Http\Controllers\Backend\ServiceController::class, 'forceDelete'])->name('forcedelete');
         });
     });
 });

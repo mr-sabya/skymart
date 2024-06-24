@@ -55,7 +55,7 @@ class BannerController extends Controller
             'title' => 'required|string|max:255',
             'button_text' => 'required|string|max:255',
             'link' => 'required|string|max:255',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
         ]);
 
         $data = $request->all();
@@ -101,7 +101,7 @@ class BannerController extends Controller
             'title' => 'required|string|max:255',
             'button_text' => 'required|string|max:255',
             'link' => 'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
         ]);
 
         $data = $request->all();
@@ -143,6 +143,6 @@ class BannerController extends Controller
         $banner = Banner::withTrashed()->findOrFail(intval($id));
         FileUploadHelper::delete($banner->image);
         $banner->forceDelete();
-        return redirect()->route('admin.banner.index')->with('success', 'Banner has beed deleted permanently');
+        return redirect()->route('admin.banner.trash')->with('success', 'Banner has beed deleted permanently');
     }
 }
