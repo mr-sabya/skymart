@@ -106,7 +106,7 @@ class SliderController extends Controller
 
         $slider->update($data);
 
-        return redirect()->route('admin.slider.index')->with('success', 'Slider has beed updated suucessfully');
+        return redirect()->route('admin.slider.index')->with('success', 'Slider has been updated suucessfully');
     }
 
     /**
@@ -117,7 +117,7 @@ class SliderController extends Controller
         $slider = Slider::findOrFail(intval($id));
         $slider->delete();
 
-        return redirect()->route('admin.slider.index')->with('success', 'Slider has beed deleted suucessfully');
+        return redirect()->route('admin.slider.index')->with('success', 'Slider has been deleted suucessfully');
     }
 
     /**
@@ -128,7 +128,7 @@ class SliderController extends Controller
         $slider = Slider::withTrashed()->findOrFail(intval($id));
         $slider->restore();
 
-        return redirect()->route('admin.slider.index')->with('success', 'Slider has beed restored suucessfully');
+        return redirect()->route('admin.slider.index')->with('success', 'Slider has been restored suucessfully');
     }
 
     /**
@@ -140,6 +140,6 @@ class SliderController extends Controller
         FileUploadHelper::delete($slider->image);
         $slider->forceDelete();
 
-        return redirect()->route('admin.slider.trash')->with('success', 'Slider has beed Deleted suucessfully');
+        return redirect()->route('admin.slider.trash')->with('success', 'Slider has been Deleted suucessfully');
     }
 }

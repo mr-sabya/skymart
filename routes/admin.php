@@ -127,5 +127,13 @@ Route::name('admin.')->group(function () {
             Route::get('/service/restore/{id}', [App\Http\Controllers\Backend\ServiceController::class, 'restore'])->name('restore');
             Route::delete('/service/delete/{id}', [App\Http\Controllers\Backend\ServiceController::class, 'forceDelete'])->name('forcedelete');
         });
+
+        // team members
+        Route::resource('team', App\Http\Controllers\Backend\TeamController::class);
+        Route::prefix('trash')->name('team.')->group(function () {
+            Route::get('/team', [App\Http\Controllers\Backend\TeamController::class, 'trash'])->name('trash');
+            Route::get('/team/restore/{id}', [App\Http\Controllers\Backend\TeamController::class, 'restore'])->name('restore');
+            Route::delete('/team/delete/{id}', [App\Http\Controllers\Backend\TeamController::class, 'forceDelete'])->name('forcedelete');
+        });
     });
 });

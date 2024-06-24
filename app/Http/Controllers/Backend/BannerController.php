@@ -66,7 +66,7 @@ class BannerController extends Controller
 
         Banner::create($data);
 
-        return redirect()->route('admin.banner.index')->with('success', 'Banner has beed added successfully');
+        return redirect()->route('admin.banner.index')->with('success', 'Banner has been added successfully');
     }
 
     /**
@@ -112,7 +112,7 @@ class BannerController extends Controller
 
         $banner->update($data);
 
-        return redirect()->route('admin.banner.index')->with('success', 'Banner has beed updated successfully');
+        return redirect()->route('admin.banner.index')->with('success', 'Banner has been updated successfully');
     }
 
     /**
@@ -122,7 +122,7 @@ class BannerController extends Controller
     {
         $banner = Banner::findOrFail(intval($id));
         $banner->delete();
-        return redirect()->route('admin.banner.index')->with('success', 'Banner has beed deleted successfully');
+        return redirect()->route('admin.banner.index')->with('success', 'Banner has been deleted successfully');
     }
 
     /**
@@ -143,6 +143,6 @@ class BannerController extends Controller
         $banner = Banner::withTrashed()->findOrFail(intval($id));
         FileUploadHelper::delete($banner->image);
         $banner->forceDelete();
-        return redirect()->route('admin.banner.trash')->with('success', 'Banner has beed deleted permanently');
+        return redirect()->route('admin.banner.trash')->with('success', 'Banner has been deleted permanently');
     }
 }

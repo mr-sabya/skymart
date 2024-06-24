@@ -104,7 +104,7 @@ class ServiceController extends Controller
 
         $service->update($data);
 
-        return redirect()->route('admin.service.index')->with('success', 'Service has beed updated successfully');
+        return redirect()->route('admin.service.index')->with('success', 'Service has been updated successfully');
     }
 
     /**
@@ -115,7 +115,7 @@ class ServiceController extends Controller
         $service = Service::findOrFail(intval($id));
         $service->delete();
 
-        return redirect()->route('admin.service.index')->with('success', 'Service has beed deleted successfully');
+        return redirect()->route('admin.service.index')->with('success', 'Service has been deleted successfully');
     }
 
     /**
@@ -126,7 +126,7 @@ class ServiceController extends Controller
         $service = Service::withTrashed()->findOrFail(intval($id));
         $service->restore();
 
-        return redirect()->route('admin.service.index')->with('success', 'Service has beed restored successfully');
+        return redirect()->route('admin.service.index')->with('success', 'Service has been restored successfully');
     }
 
     /**
@@ -138,6 +138,6 @@ class ServiceController extends Controller
         FileUploadHelper::delete($service->image);
         $service->forceDelete();
 
-        return redirect()->route('admin.service.trash')->with('success', 'Service has beed deleted permanently');
+        return redirect()->route('admin.service.trash')->with('success', 'Service has been deleted permanently');
     }
 }
